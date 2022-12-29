@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -15,12 +16,13 @@ export class RegisterComponent implements OnInit{
   signUpForm!  : FormGroup;
 
   constructor (
-    private fB: FormBuilder
+    private fb: FormBuilder,
+    private auth: AuthService
   ) {}
 
 
   ngOnInit(): void {
-    this.signUpForm = this.fB.group({
+    this.signUpForm = this.fb.group({
       firstName: ['',Validators.required],
       lastName: ['', Validators.required],
       username: ['', Validators.required],
@@ -37,11 +39,20 @@ export class RegisterComponent implements OnInit{
     this.isText ? this.type = "text" : this.type = "password";
   }
 
-  onSubmit(){
+  onSignup(){
     if(this.signUpForm.valid){
 
       console.log(this.signUpForm.value)
       //send obj to db
+      this.auth.signUp(this.signUpForm.value)
+      .subscribe({
+        next:(res)=> {
+          alert(res.message)
+        },
+        error: (err=> {
+          alert(err?.error.message)
+        })
+      })
     }else {
 
       console.log("Form is not valid");
@@ -51,18 +62,6 @@ export class RegisterComponent implements OnInit{
     }
   }
 
-  onSignup(){
-    if(this.signUpForm.valid){
-      //perform logic for signup
-
-      console.log(this.signUpForm.value)
-    } else {
-      //logic for throwing error
-      console.log("form is not valid");
-      this.validateAllFormFileds(this.signUpForm)
-      alert("your form is invalid")
-    }
-  }
   
   private validateAllFormFileds(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(field => {
