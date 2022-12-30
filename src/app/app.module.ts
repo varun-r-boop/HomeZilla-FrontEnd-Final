@@ -13,13 +13,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { OtpVerificationService } from './services/otp-verification.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgOtpInputConfig } from 'ng-otp-input';
-
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    VerificationComponent
+    VerificationComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +28,6 @@ import { NgOtpInputConfig } from 'ng-otp-input';
     ReactiveFormsModule,
     NgOtpInputModule,
     HttpClientModule
-    
   ],
   providers: [ AuthService,
   OtpVerificationService,
