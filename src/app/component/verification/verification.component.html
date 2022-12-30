@@ -1,0 +1,27 @@
+<div style="min-height: 40rem;" class="container">
+    <div class="row">
+      <div
+        class="col-12 d-flex flex-column justify-content-center align-items-center"
+      >
+  
+        <div class="card border-0 p-5">
+          <div class="text-center cd-text">
+            <h4 class="my-3 fw-bold">Enter Verification Code</h4>
+          </div>
+  
+          <ng-otp-input
+            class="m-auto text-center"
+            [config]="config"
+            (onInputChange)="onOtpChange($event)"
+          ></ng-otp-input>
+        </div>
+        <button
+          [disabled]="otp.length != 6"
+          (click)="submit()"
+          class="btn button mt-4 button rounded-pill"
+        >
+          Verify
+        </button>
+      </div>
+    </div>
+  </div>
