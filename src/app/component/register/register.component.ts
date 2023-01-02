@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { NgToastModule } from 'ng-angular-popup';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +9,10 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit{
+
+
+export  class RegisterComponent implements OnInit{
+
 
   email?: string ='';
   type:string = "password";
@@ -17,10 +21,12 @@ export class RegisterComponent implements OnInit{
 
   signUpForm!  : FormGroup;
 
+ 
   constructor (
     private fb: FormBuilder,
     private auth: AuthService,
-    private router:Router
+    private router: Router,
+    private toast: NgToastModule    
   ) {}
 
 
@@ -34,6 +40,7 @@ export class RegisterComponent implements OnInit{
       email: ['', Validators.required],
       password: ['', Validators.required]
     })
+   
 
     
   }
@@ -52,7 +59,8 @@ export class RegisterComponent implements OnInit{
       this.auth.signUp(this.signUpForm.value)
       .subscribe({
         next:(res)=> {
-          alert(res.message)
+          console.log(this.signUpForm.value)
+          alert(res['message'])
           this.router.navigate(['/verification'],{queryParams:{email:this.email}});
         },
         error: (err=> {
