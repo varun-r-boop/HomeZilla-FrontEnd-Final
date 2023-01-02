@@ -60,7 +60,7 @@ export  class RegisterComponent implements OnInit{
       .subscribe({
         next:(res)=> {
           console.log(this.signUpForm.value)
-          alert(res.message)
+          alert(res['message'])
           this.router.navigate(['/verification'],{queryParams:{email:this.email}});
         },
         error: (err=> {

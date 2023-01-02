@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit{
       this.auth.login(this.loginForm.value)
       .subscribe({
         next:(res)=>{
-          console.log(res.message);
+          console.log(res['message']);
           //this.loginForm.reset();
           alert("logged in")
           //this.auth.storeToken(res.accessToken); 

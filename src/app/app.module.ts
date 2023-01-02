@@ -18,7 +18,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
 
 import { OtpVerificationService } from './services/otp-verification.service';
-import { NgToastService } from 'ng-angular-popup';
+import { ToastrService } from 'ngx-toastr';
 //import { NgOtpInputModule} from 'ng-opt-input';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 //import { VerificationComponent } from './component/verification/verification.component';
@@ -44,12 +44,14 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
     HttpClientModule,
     //DropdownModule,
     NgToastModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrService
   ],
   providers: [ AuthService,
   OtpVerificationService,
-  { provide: NgToastService, useValue: NgToastService },
+  { provide: ToastrService, useValue: ToastrService },
   NgOtpInputConfig],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
