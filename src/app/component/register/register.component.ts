@@ -1,23 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { NgToastModule } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit{
-  
+
+
+export  class RegisterComponent implements OnInit{
+
   type:string = "password";
   isText:boolean = false;
   eyeIcon: string = "fa-eye-slash";
 
   signUpForm!  : FormGroup;
 
+ 
   constructor (
     private fb: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router,
+    private toast: NgToastModule    
   ) {}
 
 
@@ -31,6 +38,7 @@ export class RegisterComponent implements OnInit{
       email: ['', Validators.required],
       password: ['', Validators.required]
     })
+   
   }
 
   hideShowPass(){
@@ -47,6 +55,7 @@ export class RegisterComponent implements OnInit{
       this.auth.signUp(this.signUpForm.value)
       .subscribe({
         next:(res)=> {
+          console.log(this.signUpForm.value)
           alert(res.message)
         },
         error: (err=> {

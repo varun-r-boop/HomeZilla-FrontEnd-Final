@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,7 +9,8 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
+  [x: string]: any;
 
   type:string = "password";
   isText:boolean = false;
@@ -15,7 +18,9 @@ export class LoginComponent {
   loginForm!: FormGroup;
   constructor (
     private fb: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router,
+    private toast: NgToastService
   ) {}
 
 
@@ -40,11 +45,19 @@ export class LoginComponent {
       this.auth.login(this.loginForm.value)
       .subscribe({
         next:(res)=>{
-          alert(res.message)
+          console.log(res.message);
+          //this.loginForm.reset();
+          alert("logged in")
+          //this.auth.storeToken(res.accessToken); 
+          //const tokenPayload = this.auth['decodedToken']();
+          //this['toast'].success({detail: "SUCCESS", summary: res.message, duration: 5000});
+          //this['router'].navigate(['dashboard'])
         },
         error: (err)=>{
-          alert(err?.error.message)
-        }
+          alert("something rong")
+         // this['toast'].error({detail: "ERROR", summary: "Something went wrong!", duration: 5000});
+          console.log(err);
+        },
       })
 
     }else {
