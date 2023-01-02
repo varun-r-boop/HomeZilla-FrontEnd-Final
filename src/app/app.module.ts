@@ -9,11 +9,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { VerificationComponent } from './component/verification/verification.component';
 import { NgOtpInputModule } from  'ng-otp-input';
 import { AuthService } from './services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import { OtpVerificationService } from './services/otp-verification.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgOtpInputConfig } from 'ng-otp-input';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { CredentialsInterceptor } from './helper/interceptor/credentials.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
   providers: [ AuthService,
   OtpVerificationService,
   { provide: ToastrService, useValue: ToastrService },
+  { provide: HTTP_INTERCEPTORS, useClass: CredentialsInterceptor, multi: true },
   NgOtpInputConfig],
   bootstrap: [AppComponent]
 })
