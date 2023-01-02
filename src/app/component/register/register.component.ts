@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 
 export  class RegisterComponent implements OnInit{
 
+
+  email?: string ='';
   type:string = "password";
   isText:boolean = false;
   eyeIcon: string = "fa-eye-slash";
@@ -39,6 +41,8 @@ export  class RegisterComponent implements OnInit{
       password: ['', Validators.required]
     })
    
+
+    
   }
 
   hideShowPass(){
@@ -57,6 +61,7 @@ export  class RegisterComponent implements OnInit{
         next:(res)=> {
           console.log(this.signUpForm.value)
           alert(res.message)
+          this.router.navigate(['/verification'],{queryParams:{email:this.email}});
         },
         error: (err=> {
           alert(err?.error.message)
