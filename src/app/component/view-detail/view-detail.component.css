@@ -1,0 +1,33 @@
+.modal-container{
+    all: initial;
+    all: unset;
+}
+.btn{
+    margin-top: 20px;
+    border-radius: 15px;
+    background-color: hsl(32, 100%, 50%);
+    color: white;
+}
+
+.btn:hover{
+    background-color: hsl(32, 100%, 50%);
+    color: white;
+}
+
+.btn-primary{
+    border: hsl(32, 100%, 50%);
+    background-color: hsl(32, 100%, 50%);
+}
+.modal-container{
+    height: 1500px;
+}
+img{
+    margin-top: 20px;
+    border-radius: 15px;
+}
+.picker{
+    background-color: white;
+    margin-top: 20px;
+    border-radius: 15px;
+    border-color: black;
+}

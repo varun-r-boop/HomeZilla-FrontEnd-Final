@@ -1,0 +1,21 @@
+.btn{
+    margin-top: 20px;
+    border-radius: 15px;
+}
+.btn-block{
+    border: hsl(32, 100%, 50%);
+    background-color: hsl(32, 100%, 50%);
+}
+
+.btn:hover{
+    background-color: hsl(32, 100%, 50%);
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+    color: hsl(32, 100%, 50%);
+}

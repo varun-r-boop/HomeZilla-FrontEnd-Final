@@ -1,21 +1,29 @@
+nav{
+    background-color: rgb(44, 42, 42);
+    height: 80px;
+} 
 .btn{
     margin-top: 20px;
     border-radius: 15px;
-}
-.btn-block{
-    border: hsl(32, 100%, 50%);
-    background-color: hsl(32, 100%, 50%);
+    color: white;
 }
 
 .btn:hover{
+    background-color: hsl(32, 100%, 50%);
+    color: white;
+}
+
+.btn-primary{
+    border: hsl(32, 100%, 50%);
     background-color: hsl(32, 100%, 50%);
 }
 
 a:hover{
     text-decoration: none;
+    color: white;
 }
 
 a{
     text-decoration: none;
-    color: hsl(32, 100%, 50%);
+    color: white;
 }
