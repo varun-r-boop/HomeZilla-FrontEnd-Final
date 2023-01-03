@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,7 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
 import { CredentialsInterceptor } from './helper/interceptor/credentials.interceptor';
 import { StorageService } from './services/storage.service';
 import { JwtInterceptor } from './helper/interceptor/jwt.interceptor';
+import { NgOtpInputComponent } from 'ng-otp-input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { JwtInterceptor } from './helper/interceptor/jwt.interceptor';
     HomeComponent,
     VerificationComponent,
     ForgotPasswordComponent,
-    NgModule
+    NgModule,
+  
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,7 @@ import { JwtInterceptor } from './helper/interceptor/jwt.interceptor';
     ToastrService,
     NgOtpInputModule
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA],
   providers: [ AuthService,
   OtpVerificationService,
   StorageService,

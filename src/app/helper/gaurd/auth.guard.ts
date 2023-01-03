@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { NgToastService} from 'ng-angular-popup';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private toast: NgToastService
+    private toast: ToastrService
   ) {}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
       return true
     }
     else {
-      this.toast.error({detail: "ERROR", summary: "Please Login First"})
+      this.toast.error("Please Login First")
       this.router.navigate(['login'])
       return false;
     }

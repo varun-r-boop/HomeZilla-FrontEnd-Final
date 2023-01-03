@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { NgOtpInputConfig } from 'ng-otp-input';
 import { ToastrService } from 'ngx-toastr';
@@ -30,7 +31,7 @@ constructor(
   private route: ActivatedRoute,
   private authService : AuthService
 ){}
-  ngOnInit() {
+  ngOnInit() : void {
     this.authService.userEmailId.subscribe(response => {
 this.email = response; 
     })

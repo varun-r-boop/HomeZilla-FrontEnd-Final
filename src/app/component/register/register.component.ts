@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { NgToastModule } from 'ng-angular-popup';
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,7 +26,7 @@ export  class RegisterComponent implements OnInit{
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private toast: NgToastModule    
+    private toast: ToastrService    
   ) {}
 
 
