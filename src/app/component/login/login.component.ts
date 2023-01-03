@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +14,23 @@ export class LoginComponent {
   isText:boolean = false;
   eyeIcon: string = "fa-eye-slash"
   loginForm!: FormGroup;
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
   constructor (
     private fb: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private storageService: StorageService
   ) {}
 
 
  
   ngOnInit(): void {
+    if(this.storageService.isLoggedIn()){
+      this.isLoggedIn = true;
+      this.roles = this.storageService.getUser().roles;
+    }
     this.loginForm = this.fb.group({    //grouping the form
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -40,10 +50,18 @@ export class LoginComponent {
       this.auth.login(this.loginForm.value)
       .subscribe({
         next:(res)=>{
-          alert(res.message)
+          console.log(res.headers.get('authorization'));
+          this.storageService.saveUser(res.headers.get('authorization'));
+
+          this.isLoginFailed = false;
+          this.isLoggedIn = true;
+          this.roles = this.storageService.getUser().roles;
+        //  this.reloadPage();
+          alert(res.body)
         },
         error: (err)=>{
-          alert(err?.error.message)
+          alert(err?.error.message);
+          this.isLoginFailed = true;
         }
       })
 
@@ -65,5 +83,8 @@ export class LoginComponent {
         this.validateAllFormFileds(control)
       }
     })
+  }
+  reloadPage(): void {
+    window.location.reload();
   }
 }

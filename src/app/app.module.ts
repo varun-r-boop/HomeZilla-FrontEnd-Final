@@ -15,6 +15,8 @@ import { ToastrService } from 'ngx-toastr';
 import { NgOtpInputConfig } from 'ng-otp-input';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { CredentialsInterceptor } from './helper/interceptor/credentials.interceptor';
+import { StorageService } from './services/storage.service';
+import { JwtInterceptor } from './helper/interceptor/jwt.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,8 +34,10 @@ import { CredentialsInterceptor } from './helper/interceptor/credentials.interce
   ],
   providers: [ AuthService,
   OtpVerificationService,
+  StorageService,
   { provide: ToastrService, useValue: ToastrService },
   { provide: HTTP_INTERCEPTORS, useClass: CredentialsInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   NgOtpInputConfig],
   bootstrap: [AppComponent]
 })
