@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgToastService } from 'ng-angular-popup';
+import { ToastrService } from 'ngx-toastr';
+//import { NgToastService } from 'ng-angular-popup';
+
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -20,7 +22,7 @@ export class LoginComponent implements OnInit{
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private toast: NgToastService
+    private toast: ToastrService
   ) {}
 
 
@@ -46,16 +48,16 @@ export class LoginComponent implements OnInit{
       .subscribe({
         next:(res)=>{
           console.log(res['message']);
-          //this.loginForm.reset();
-          alert("logged in")
-          //this.auth.storeToken(res.accessToken); 
-          //const tokenPayload = this.auth['decodedToken']();
-          //this['toast'].success({detail: "SUCCESS", summary: res.message, duration: 5000});
-          //this['router'].navigate(['dashboard'])
+          this.loginForm.reset();
+          //alert("logged in") using tosst message
+          this.auth.storeToken(res['accessToken']); 
+          const tokenPayload = this.auth['decodedToken']();
+          this['toast!'].success({detail: "SUCCESS", summary: res['message']});
+          this['router'].navigate(['dashboard'])
         },
         error: (err)=>{
-          alert("something rong")
-         // this['toast'].error({detail: "ERROR", summary: "Something went wrong!", duration: 5000});
+          //alert("something rong") using toaast message
+         this['toast!'].error({detail: "ERROR", summary: "Something went wrong!"});
           console.log(err);
         },
       })

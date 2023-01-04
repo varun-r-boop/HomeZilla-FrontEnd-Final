@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { NgToastModule } from 'ng-angular-popup';
+//import { NgToastModule } from 'ng-angular-popup';
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Register } from 'src/app/models/Register';
 
 @Component({
   selector: 'app-register',
@@ -20,13 +22,14 @@ export  class RegisterComponent implements OnInit{
   eyeIcon: string = "fa-eye-slash";
 
   signUpForm!  : FormGroup;
+  isSubmitted: boolean = false;
 
  
   constructor (
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private toast: NgToastModule    
+    private toast: ToastrService    
   ) {}
 
 
@@ -39,9 +42,8 @@ export  class RegisterComponent implements OnInit{
       mobileNumber: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required]
-    })
+    });
    
-
     
   }
 
@@ -51,7 +53,11 @@ export  class RegisterComponent implements OnInit{
     this.isText ? this.type = "text" : this.type = "password";
   }
 
+ 
+ 
+
   onSignup(){
+   
     if(this.signUpForm.valid){
 
       console.log(this.signUpForm.value)

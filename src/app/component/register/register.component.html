@@ -20,7 +20,7 @@
 
               <div class="form-group pt-3">
                 <div class="input-field"  [class.eroror]="signUpForm.controls['lastName'].dirty && signUpForm.hasError('required', 'lastName')">
-                  <span class="fa fa-envelope p-2"></span>
+                  <span class="fa fa-user-o p-2"></span>
                   <input formControlName="lastName" type="text" placeholder="LastName">
                 </div>
               </div>
@@ -29,22 +29,14 @@
 
               <div class="form-group pt-3">
                 <div class="input-field" [class.eroror]="signUpForm.controls['username'].dirty && signUpForm.hasError('required', 'username')">
-                  <span class="fa fa-envelope p-2"></span>
+                  <span class="fa fa-user-o p-2"></span>
                   <input formControlName="username" type="text" placeholder="Username">
                 </div>
               </div>
               <small *ngIf="signUpForm.controls['username'].dirty && signUpForm.hasError('required', 'username') " class="text-danger">Username is required</small>
              
 
-              <div class="form-group pt-3">
-                <div class="input-field" [class.eroror]="signUpForm.controls['userRole'].dirty && signUpForm.hasError('required', 'userRole')">
-                  <span class="fa fa-user p-2"></span>
-                  <input formControlName="userRole" type="text" placeholder="UserRole">
-                </div>
-              </div>
-              <small *ngIf="signUpForm.controls['userRole'].dirty && signUpForm.hasError('required', 'userRole') " class="text-danger">User Role is required</small>
-              
-
+             
               <div class="form-group pt-3">
                 <div class="input-field" [class.eroror]="signUpForm.controls['mobileNumber'].dirty && signUpForm.hasError('required', 'mobileNumber')">
                   <span class="fa fa-mobile p-2"></span>
@@ -72,6 +64,33 @@
               </div>
               <small *ngIf="signUpForm.controls['password'].dirty && signUpForm.hasError('required', 'password') " class="text-danger">
                 password is required</small>
+
+                
+
+                 <!-- <div class="form-group pt-3">
+                <div class="input-field" [class.eroror]="signUpForm.controls['userRole'].dirty && signUpForm.hasError('required', 'userRole')">
+                  <span class="fa fa-user p-2"></span>
+                  <input formControlName="userRole" type="text" placeholder="UserRole">
+                </div>
+              </div>
+              <small *ngIf="signUpForm.controls['userRole'].dirty && signUpForm.hasError('required', 'userRole') " class="text-danger">User Role is required</small>
+               -->
+
+              <div class="form-group pt-3">
+             
+                <input class="form-check-input" type="radio" name="flexRadioDefault" value="Customer" formControlName="userRole">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Customer
+                </label>
+                        
+              
+                <input class="form-check-input" type="radio" name="flexRadioDefault" value="Provider" formControlName="userRole">
+                <label class="form-check-label" for="flexRadioDefault2" >
+                  Provider
+                </label>
+              </div>              
+              <!-- <small *ngIf="signUpForm.controls['userRole'].dirty && signUpForm.hasError('required', 'userRole') " class="text-danger">Please select user-role</small> -->
+
 
               <button (click)="onSignup()" type="submit" class="btn btn-primary btn-block mt-4 w-100 " >register</button>
               <div class="text-center pt-4 text-muted">Already have account? <a id="forgot" routerLink="/login">Login</a></div>

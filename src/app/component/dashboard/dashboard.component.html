@@ -19,13 +19,22 @@
                     class="fas fa-user-secret me-2"></i>HomeZilla</div>
             <div class="list-group list-group-flush my-3">
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                        class="fas fa-tachometer-alt me-2"></i>Hi, Welocmeback!!</a>
+                        class="fas fa-tachometer-alt me-2"></i >Hi, Welcomeback!!</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-project-diagram me-2"></i>Profile</a>
+                        class="fas fa-project-diagram me-2" routerLink="/dashboard"></i >Profile</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-chart-line me-2"></i>current Order</a>
+                        class="fas fa-chart-line me-2" routerLink="/current-order"></i >current Order</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-paperclip me-2"></i>Past Oder</a>
+                        class="fas fa-paperclip me-2" routerLink="/past-order"></i>Past Oder</a>
+                        <!-- <div class="text-center pt-4 text-muted">
+                           <a id="forgot" routerLink="/dashboard">Profile</a>
+                        </div>
+                        <div class="text-center pt-4 text-muted">
+                          <a id="forgot" routerLink="/current-order">Current Order</a>
+                       </div>
+                       <div class="text-center pt-4 text-muted">
+                        <a id="forgot" routerLink="/dashboard">Profile</a>
+                     </div> -->
                 
             </div>
         </div>
@@ -36,7 +45,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Hi, Welocmeback!!</h2>
+                    <h2 class="fs-2 m-0">Hi, Welcomeback!!</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -135,6 +144,58 @@
                                       </div>
                                     </div>
                                   </div>
+
+                                  <div class="table">
+                                    <table>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Appointment From</th>
+                                            <th>Appointment To</th>
+                                            <th>Service</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        <tr>
+                                            <td>12345 </td>
+                                            <td>05-01-2023</td>
+                                            <td>06-01-2023</td>
+                                            <td>Plumbing</td>
+                                            <td><a href="#" class="btn">Accept</a></td>
+                                            <td><a href="#" class="btn">Decline</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>12345 </td>
+                                            <td>05-01-2023</td>
+                                            <td>06-01-2023</td>
+                                            <td>Plumbing</td>
+                                            <td><a href="#" class="btn">Accept</a></td>
+                                            <td><a href="#" class="btn">Decline</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>12345 </td>
+                                            <td>05-01-2023</td>
+                                            <td>06-01-2023</td>
+                                            <td>Plumbing</td>
+                                            <td><a href="#" class="btn">Accept</a></td>
+                                            <td><a href="#" class="btn">Decline</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>12345 </td>
+                                            <td>05-01-2023</td>
+                                            <td>06-01-2023</td>
+                                            <td>Plumbing</td>
+                                            <td><a href="#" class="btn">Accept</a></td>
+                                            <td><a href="#" class="btn">Decline</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>12345 </td>
+                                            <td>05-01-2023</td>
+                                            <td>06-01-2023</td>
+                                            <td>Plumbing</td>
+                                            <td><a href="#" class="btn">Accept</a></td>
+                                            <td><a href="#" class="btn">Decline</a></td>
+                                        </tr>
+                                        </table>
+                                    </div>                   
                                 <!-- <tr>
                                     <th scope="col" width="50">#</th>
                                     <th scope="col">Product</th>
