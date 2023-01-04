@@ -21,11 +21,9 @@ export class SearchPageComponent implements AfterContentInit{
   {
   }
   ngAfterContentInit() {
-    this.searchService.getSearchResults().subscribe(posts=>{
-      this.post = posts
-      this.searchService.postsData = posts
-    });
+   
   }
+  
 
   openModal()
   {

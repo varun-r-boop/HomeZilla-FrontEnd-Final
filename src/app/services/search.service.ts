@@ -12,8 +12,8 @@ export class SearchService {
   public postsData!: SearchResponse[];
   public searchPostUrl = "https://localhost:7263/api/Search"
   constructor(private http : HttpClient) { }
-  getSearchResults(): Observable<SearchResponse[]>{
-    var res = this.http.get<SearchResponse[]>(this.searchPostUrl);
+  getSearchResults(query:string,location:string,pageNumber:number): Observable<SearchResponse[]>{
+    var res = this.http.get<SearchResponse[]>(`https://localhost:7263/api/Search?Service=${query}`);
     console.log(res);
     return res;
   }
