@@ -1,6 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './component/register/register.component';
@@ -39,6 +38,7 @@ import { SearchPageComponent } from './component/search-page/search-page.compone
 import { ViewDetailComponent } from './component/view-detail/view-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchService } from './services/search.service';
+import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -50,9 +50,7 @@ import { SearchService } from './services/search.service';
     DashboardComponent,
     HeaderComponent,
     SidenavComponent,
-    HomeComponent,
     VerificationComponent,
-    ForgotPasswordComponent,
     CurrentOrdersComponent,
     PastOrdersComponent,
     VerifyComponent,
@@ -64,7 +62,7 @@ import { SearchService } from './services/search.service';
     HomeComponent,
     CommonNavComponent,
     SearchPageComponent,
-    ViewDetailComponent
+    ViewDetailComponent,
      ],
   imports: [
     BrowserModule,

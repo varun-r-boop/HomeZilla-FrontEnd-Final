@@ -24,14 +24,14 @@ export class AuthService {
     private router: Router
   ) { }
 
-  signUp( register: Register): Observable<Register>{
-    return this.http.post<Register>(`${this.baseUrl}Register`, register);
+  // signUp( register: Register): Observable<Register>{
+  //   return this.http.post<Register>(`${this.baseUrl}Register`, register);
     
-  }
-  // signUp( userObj: any) {
-  //   this.userEmailId.next(userObj.email);
-  //   return this.http.post<any>(`${this.baseUrl}Register`, userObj)
   // }
+  signUp( userObj: any) {
+    this.userEmailId.next(userObj.email);
+    return this.http.post<any>(`${this.baseUrl}Register`, userObj)
+  }
 
     signOut(){
       sessionStorage.clear();
