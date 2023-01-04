@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit{
         next:(res)=>{
           console.log(res['headers'].get('authorization'));
           this.storageService.saveUser(res['headers'].get('authorization'));
-          this['toast!'].success({detail: "SUCCESS", summary: res['message']});
+          this.toast.success("Login successful");
 
           this.isLoginFailed = false;
           this.isLoggedIn = true;
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit{
         },
         error: (err)=>{
           
-         this['toast!'].error({detail: "ERROR", summary: "Something went wrong!"});
+         this.toast.error("something went wrong");
          
           this.isLoginFailed = true;
         }

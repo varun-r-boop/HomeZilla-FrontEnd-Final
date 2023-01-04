@@ -15,14 +15,14 @@ import { VerifyComponent } from './verify/verify.component';
 
 const routes: Routes = [
   {path: 'register', component:RegisterComponent},
-  {path: 'login', component:LoginComponent},
- // {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: 'login', component:LoginComponent,  },
   {path: 'forgotPassword', component:ForgotPasswordComponent},
   {path: 'verification',component:VerificationComponent},
   {path: 'verify', component: VerifyComponent},
   {path: 'current-order',component:CurrentOrderComponent} ,
   {path: 'past-order', component:PastOrderComponent},
-  {path: 'c-current-order', component: CCurrentOrderComponent}
+  {path: 'c-current-order', component: CCurrentOrderComponent},
+  {path: 'dashboard', component:DashboardComponent, }
   
 ];
 
