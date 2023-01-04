@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
-        <div class="panel border bg-white">
+        <div class="panel" style="background-color: rgb(44, 42, 42);">
           <div class="panel-heading">
             <h3 class="pt-3 font-weight-bold">Login</h3>
           </div>
@@ -16,7 +16,7 @@
                 </div>
               </div>
               <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required', 'email') " class="text-danger">
-                email is required</small>
+                email is required </small>
               <div class="form-group pt-3">
                 <div class="input-field" [class.eroror]="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">
                   <span class="fa fa-lock p-2"></span>
@@ -29,12 +29,11 @@
               <div class="form-inline fr mt-4">
                 <a id="forgot" class="font-weight-bold" routerLink="/forgotPassword">forgot password?</a>
               </div>
-              <button (click)="onLogin()" type="submit" class="btn btn-primary btn-block mt-4 w-100 " routerLink="/dashboard">Login</button>
-              <div class="text-center pt-4 text-muted">Don't have account? <a id="forgot" routerLink="/register">Sign Up</a></div>
+              <button (click)="onLogin()" type="submit" class="btn btn-primary btn-block mt-4 w-100 ">Login</button>
+              <div class="text-center pt-4" style="color: white;" >Don't have account? <a id="forgot" routerLink="/register">Sign Up</a></div>
             </form>
           </div>
-          <div class="mx-3 my-2 py-2 border">
-            <!-- <p >sign in with</p> -->
+          <div class="mx-3 my-2 py-2 ">
             <div class="text-center py-3">
               <a href="https://www.facebook.com" target="_blank" class="px-2"><img src="../../../assets/fb.jpg" alt=""></a>
               <a href="https://www.google.com" target="_blank" class="px-2"><img src="../../../assets/google.jpg" alt=""></a>
@@ -47,4 +46,4 @@
       </div>
     </div>
   </div>
-</div>       
+</div>      

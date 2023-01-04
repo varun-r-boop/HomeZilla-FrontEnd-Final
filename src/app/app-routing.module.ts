@@ -14,6 +14,9 @@ import { VerifyComponent } from './verify/verify.component';
 import { ChangePasswordComponent } from './component/change-password/change-password.component';
 
 //import { forgotPassword } from './component/forgot-password/forgot-password.component';
+import { HomeComponent } from './component/home/home.component';
+import { SearchPageComponent } from './component/search-page/search-page.component';
+
 
 const routes: Routes = [
   {path: 'register', component:RegisterComponent},
@@ -31,7 +34,9 @@ const routes: Routes = [
   {path: 'c-current-order', component: CCurrentOrderComponent},
   {path: 'dashboard', component:DashboardComponent},
   {path: 'changePassword', component: ChangePasswordComponent}
-  
+  ,
+  {path: 'home',component:HomeComponent},
+  {path: 'search', component:SearchPageComponent}
 ];
 
 @NgModule({

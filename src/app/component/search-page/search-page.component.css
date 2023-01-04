@@ -1,0 +1,42 @@
+.card{
+    background-color:  rgb(44, 42, 42);
+    color: white;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+.card-header{
+    color: hsl(32, 100%, 50%);
+}
+img{
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.btn{
+    margin-top: 20px;
+    border-radius: 15px;
+    background-color: hsl(32, 100%, 50%);
+    color: white;
+}
+
+.btn:hover{
+    background-color: hsl(32, 100%, 50%);
+    color: white;
+}
+
+.btn-primary{
+    border: hsl(32, 100%, 50%);
+    background-color: hsl(32, 100%, 50%);
+}
+a:hover{
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+    color: hsl(32, 100%, 50%);
+}
+img
+{
+background-image:url('../../../assets/image/home-bg.jpg');
+}
