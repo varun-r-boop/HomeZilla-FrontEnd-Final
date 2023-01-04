@@ -9,6 +9,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { VerificationComponent } from './component/verification/verification.component';
 import { CurrentOrderComponent } from './component/current-order/current-order.component';
 //import { AuthGuard } from './helper/gaurd/auth.guard';
+import { PastOrdersComponent } from './component/dashboard/past-orders/past-orders.component';
 import { PastOrderComponent } from './component/past-order/past-order.component';
 import { VerifyComponent } from './verify/verify.component';
 import { ChangePasswordComponent } from './component/change-password/change-password.component';
@@ -25,12 +26,12 @@ const routes: Routes = [
   
   //{path: 'forgotPassword', component: ForgotPasswordComponent},
   {path: 'verification',component:VerificationComponent},
-  {path: 'current-orders',component:CurrentOrdersComponent},
+  {path: 'current-order',component:CurrentOrdersComponent},
   {path: 'forgotPassword', component:ForgotPasswordComponent},
   {path: 'verification',component:VerificationComponent},
   {path: 'verify', component: VerifyComponent},
-  {path: 'current-order',component:CurrentOrderComponent} ,
-  {path: 'past-order', component:PastOrderComponent},
+  {path: 'current-orders',component:CurrentOrderComponent} ,
+  {path: 'past-order', component:PastOrdersComponent},
   {path: 'c-current-order', component: CCurrentOrderComponent},
   {path: 'dashboard', component:DashboardComponent},
   {path: 'changePassword', component: ChangePasswordComponent}

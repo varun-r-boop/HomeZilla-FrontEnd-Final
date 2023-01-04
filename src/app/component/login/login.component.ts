@@ -1,14 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
+import {MessageService} from 'primeng/api';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+
+// import { ToastService } from './toast-service';
+// import { ToastsContainer } from './toasts-container.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
+})
+@Injectable({
+  providedIn: "root",
+  useClass: LoginComponent,
 })
 export class LoginComponent implements OnInit{
   [x: string]: any;
@@ -27,12 +36,13 @@ export class LoginComponent implements OnInit{
     private router: Router,
     private toast: ToastrService,
     private storageService: StorageService,
+    private messageService: MessageService
   
   ) {}
 
 
  
-  ngOnInit(): void {
+  ngOnInit() {
     if(this.storageService.isLoggedIn()){
       this.isLoggedIn = true;
       this.roles = this.storageService.getUser().roles;
@@ -50,7 +60,7 @@ export class LoginComponent implements OnInit{
   }
   onLogin(){
     if(this.loginForm.valid){
-
+      console.log("okkk");
       console.log(this.loginForm.value)
       //send obj to db
       this.auth.login(this.loginForm.value)
@@ -58,29 +68,23 @@ export class LoginComponent implements OnInit{
         next:(res)=>{
           console.log(res['headers'].get('authorization'));
           this.storageService.saveUser(res['headers'].get('authorization'));
-          this.toast.success("Login successful");
-
+          
           this.isLoginFailed = false;
           this.isLoggedIn = true;
           this.roles = this.storageService.getUser().roles;
         //  this.reloadPage();
          
          this.router.navigate(['/dashboard']);
+         alert("Login Successful")
         },
         error: (err)=>{
-          
-         this.toast.error("something went wrong");
-         
+          alert(err?.error.message)
           this.isLoginFailed = true;
         }
       })
 
     }else {
-
-      console.log("Form is not valid");
-      //error using toaster
-      this.validateAllFormFileds(this.loginForm);
-      alert("Your form is invalid")
+      alert("Please Enter the Correct Details")
     }
   }
 

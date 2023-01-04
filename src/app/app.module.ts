@@ -12,12 +12,11 @@ import { HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './component/home/home.component';
 import { OtpVerificationService } from './services/otp-verification.service';
 import {ToastrService}from'ngx-toastr';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { CommonModule } from '@angular/common';
-import { NgToastModule } from 'ng-angular-popup';
 import { VerifyComponent } from './verify/verify.component';
 import { CurrentOrderComponent } from './component/current-order/current-order.component';
 import { PastOrderComponent } from './component/past-order/past-order.component';
@@ -39,6 +38,7 @@ import { ViewDetailComponent } from './component/view-detail/view-detail.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchService } from './services/search.service';
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -83,6 +83,7 @@ import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
   OrderDetailsService,
   ToastrService,
   SearchService,
+  {provide: MessageService, useValue: MessageService},
   { provide: ToastrService, useValue: ToastrService },
   { provide: HTTP_INTERCEPTORS, useClass: CredentialsInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

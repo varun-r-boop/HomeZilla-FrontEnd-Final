@@ -49,11 +49,11 @@ submit(){
       next: (response: any)=>{
       
           this.router.navigateByUrl('/login');
-          this.toaster.success(response.message, 'Verified');
+          alert(response.message);
       },
       error: (err) => {
         console.log('[Verify - ERR]', err);
-        this.toaster.error('Something went Wrong', 'Verify');
+        alert('Something went Wrong');
       },
     });
   }

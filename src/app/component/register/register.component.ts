@@ -66,21 +66,16 @@ export  class RegisterComponent implements OnInit{
         next:(res)=> {
           console.log(this.signUpForm.value)
           alert(res['message'])
-          this.router.navigate(['/verification'],{queryParams:{email:this.email}});
+          this.router.navigate(['/verification']);
         },
         error: (err=> {
           alert(err?.error.message)
         })
       })
     }else {
-
-      console.log("Form is not valid");
-      //error using toaster
-      this.validateAllFormFileds(this.signUpForm);
-      alert("Your form is invalid")
+      alert("Enter All the required Fields");
     }
-  }
-
+  };
   
   private validateAllFormFileds(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(field => {

@@ -5,6 +5,7 @@ import { Register } from '../models/Register';
 import { Login } from '../models/login';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -21,7 +22,8 @@ export class AuthService {
 
   constructor(
     private http : HttpClient,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   // signUp( register: Register): Observable<Register>{
@@ -60,7 +62,7 @@ export class AuthService {
     this['fireauth'].sendPasswordResetEmail(email).then(() => {
       this['router'].navigate(['verify.email']);
     }, err=>{
-      alert("somthing went wrong");
+      this.toastr.error("somthing went wrong");
     })
    }
 
