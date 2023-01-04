@@ -26,6 +26,9 @@ import { CredentialsInterceptor } from './helper/interceptor/credentials.interce
 import { StorageService } from './services/storage.service';
 import { JwtInterceptor } from './helper/interceptor/jwt.interceptor';
 import { NgOtpInputComponent } from 'ng-otp-input';
+import { ChangePasswordComponent } from './component/change-password/change-password.component';
+
+
 import { CurrentOrdersComponent } from './component/dashboard/current-orders/current-orders.component';
 import { OrderDetailsService } from './services/order-details.service';
 import { PastOrdersComponent } from './component/dashboard/past-orders/past-orders.component';
@@ -46,10 +49,9 @@ import { PastOrdersComponent } from './component/dashboard/past-orders/past-orde
     VerifyComponent,
     CurrentOrderComponent,
     PastOrderComponent,
-    CCurrentOrderComponent
-  ],
-  
-     
+    CCurrentOrderComponent,
+    ChangePasswordComponent
+     ],
   imports: [
     BrowserModule,
     AppRoutingModule,

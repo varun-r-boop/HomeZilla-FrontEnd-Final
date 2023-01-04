@@ -11,6 +11,7 @@ import { CurrentOrderComponent } from './component/current-order/current-order.c
 //import { AuthGuard } from './helper/gaurd/auth.guard';
 import { PastOrderComponent } from './component/past-order/past-order.component';
 import { VerifyComponent } from './verify/verify.component';
+import { ChangePasswordComponent } from './component/change-password/change-password.component';
 
 //import { forgotPassword } from './component/forgot-password/forgot-password.component';
 
@@ -28,7 +29,8 @@ const routes: Routes = [
   {path: 'current-order',component:CurrentOrderComponent} ,
   {path: 'past-order', component:PastOrderComponent},
   {path: 'c-current-order', component: CCurrentOrderComponent},
-  {path: 'dashboard', component:DashboardComponent, }
+  {path: 'dashboard', component:DashboardComponent},
+  {path: 'changePassword', component: ChangePasswordComponent}
   
 ];
 
