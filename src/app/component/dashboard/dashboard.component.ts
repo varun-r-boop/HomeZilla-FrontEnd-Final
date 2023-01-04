@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class DashboardComponent implements OnInit{
   public users:any = [];
   constructor(
-    private auth: AuthService,
+    
     private router: Router
   ){}
 

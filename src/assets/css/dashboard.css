@@ -1,6 +1,6 @@
 :root {
-    --main-bg-color: #009d63;
-    --main-text-color: #009d63;
+    --main-bg-color: #F2AA4CFF;
+    --main-text-color: #F2AA4CFF;
     --second-text-color: #bbbec5;
     --second-bg-color: #c1efde;
   }
@@ -28,12 +28,12 @@
   #wrapper {
     overflow-x: hidden;
     background-image: linear-gradient(
-      to right,
-      #baf3d7,
-      #c2f5de,
-      #cbf7e4,
-      #d4f8ea,
-      #ddfaef
+      to bottom,
+      #F2AA4CFF,
+      #F2AA4CFF,
+      #5c6561,
+      #383e3e,
+      #0e0f0f
     );
   }
   
@@ -44,19 +44,24 @@
     -moz-transition: margin 0.25s ease-out;
     -o-transition: margin 0.25s ease-out;
     transition: margin 0.25s ease-out;
+    
+  
   }
   
   #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;
     font-size: 1.2rem;
+    background: #373a3a;
   }
   
   #sidebar-wrapper .list-group {
     width: 15rem;
+    background: #373a3a;
   }
   
   #page-content-wrapper {
     min-width: 100vw;
+   
   }
   
   #wrapper.toggled #sidebar-wrapper {
