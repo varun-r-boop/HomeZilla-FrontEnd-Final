@@ -22,6 +22,8 @@ import { ViewDetailComponent } from './component/view-detail/view-detail.compone
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchService } from './services/search.service';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { SearchService } from './services/search.service';
     HttpClientModule,
     NgbModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbPaginationModule
   ],
   providers: [ AuthService,
   OtpVerificationService,

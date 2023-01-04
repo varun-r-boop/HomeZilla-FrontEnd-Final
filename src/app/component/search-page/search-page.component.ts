@@ -1,5 +1,8 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { Target } from '@angular/compiler';
+import { AfterContentInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { SearchResponse } from 'src/app/models/search-response';
 import { SearchService } from 'src/app/services/search.service';
 import { ViewDetailComponent } from '../view-detail/view-detail.component';
@@ -9,30 +12,64 @@ import { ViewDetailComponent } from '../view-detail/view-detail.component';
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.css']
 })
-export class SearchPageComponent implements AfterContentInit{
-  post!: SearchResponse[]
-  public user = {
-    name: 'Izzat Nadiri',
-    age: 26
-  }
+export class SearchPageComponent implements AfterContentInit, OnDestroy{
+  post : SearchResponse = new SearchResponse();
+  page =  1;
+  pageSize: number = 10;
   
 
-  constructor (public modalService: NgbModal,private searchService : SearchService)
+  query: string= "";
+  location:string= "";
+  pageNumber: number=1;
+  unSubscribe = new Subject<void>();
+
+  constructor (public modalService: NgbModal,private searchService : SearchService, private route: ActivatedRoute, private router: Router)
   {
   }
   ngAfterContentInit() {
-   
+    this.searchService.searchData.subscribe(res => {
+      this.post = res;
+      this.page = this.post.currentPage;
+      this.pageSize = this.post.totalPages * 10;
+    })
   }
-  
 
-  openModal()
+  renderPage(event: number) {
+    this.pageNumber = event;
+    this.route.queryParams.subscribe(params => {
+      this.location = params['Location'];
+      this.query = params['Service'];
+  });
+    this.searchService.getSearchResults(this.query,this.location,this.pageNumber).subscribe(posts =>{
+      this.searchService.searchData.next(posts);
+    });
+    this.router.navigate([],{queryParams: {Service: this.query,Location: this.location, PageNumber: this.pageNumber}})
+  }
+
+  changeLocation(event: any)
+  {
+    this.location = event.target.value;
+    this.route.queryParams
+    .pipe(takeUntil(this.unSubscribe))
+    .subscribe(params => {
+      this.query = params['Service'];
+    });
+    this.pageNumber = 1;
+    this.searchService.getSearchResults(this.query,this.location,this.pageNumber).subscribe(posts =>{
+      this.searchService.searchData.next(posts);
+    });
+    this.router.navigate([],{queryParams: {Service: this.query,Location: this.location, PageNumber: this.pageNumber}})
+  }
+  openModal(id?: string)
   {
     const modalRef = this.modalService.open( ViewDetailComponent);
-    modalRef.componentInstance.user = this.user;
-    modalRef.result.then((result) => {
-      if (result) {
-        console.log(result);
-      }
+    this.searchService.getProviderById(id).subscribe(posts =>{
+      this.searchService.providerData.next(posts);
     });
+  }
+
+  ngOnDestroy() {
+      this.unSubscribe.next()
+      this.unSubscribe.complete()
   }
 }

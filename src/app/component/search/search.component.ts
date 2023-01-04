@@ -1,4 +1,7 @@
 import { AfterContentInit, Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { empty, Subject } from 'rxjs';
+import { SearchResponse } from 'src/app/models/search-response';
 import { SearchService } from 'src/app/services/search.service';
 
 
@@ -10,24 +13,19 @@ import { SearchService } from 'src/app/services/search.service';
 export class SearchComponent{
 
   query: string= "";
-  location:string='';
+  location:string= "";
   pageNumber: number=1;
-  allPosts:any;
+  
   
   constructor(
-    public searchService: SearchService
+    public searchService: SearchService,
+    private router: Router
   ){}
-  // ngAfterContentInit() {
-   
-  //   this.searchService.getSearchResults().subscribe(posts =>{
-  //     this.allPosts = posts
-  //   });
-  // }
  onSearch(){
-  
+  this.router.navigate(['/search'],{queryParams: {Service: this.query,Location: this.location, PageNumber: this.pageNumber}})
   this.searchService.getSearchResults(this.query,this.location,this.pageNumber).subscribe(posts =>{
-    this.allPosts = posts
+    this.searchService.searchData.next(posts);
   });
- }
 
+ }
 }

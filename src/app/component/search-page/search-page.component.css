@@ -36,3 +36,7 @@ a{
     text-decoration: none;
     color: hsl(32, 100%, 50%);
 }
+img
+{
+background-image:url('../../../assets/image/home-bg.jpg');
+}

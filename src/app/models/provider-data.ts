@@ -1,4 +1,6 @@
-export class ProviderList{
+import { ServiceData } from "./provider-services";
+
+export class ProviderData{
     id?:string;
     firstName?:string;
     lastName?:string;
@@ -6,4 +8,6 @@ export class ProviderList{
     mobileNumber?:number;
     location?:string;
     profilePicture?:string;
+    description?: string;
+    serviceData?: ServiceData[];
 }

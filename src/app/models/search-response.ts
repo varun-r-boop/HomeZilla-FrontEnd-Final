@@ -1,8 +1,8 @@
 import { ProviderList } from "./provider-list";
 
 export class SearchResponse{
-    CurrentPage?: number;
-    TotalPages?:number;
-    Data? : ProviderList[];
+    currentPage: number = 1;
+    totalPages:number =10;
+    data? : ProviderList[];
 
 }

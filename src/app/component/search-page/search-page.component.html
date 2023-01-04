@@ -17,37 +17,37 @@
             <div class="filter-content collapse show" id="collapse_2" >
                 <div class="card-body">
                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Chennai" (change)="changeLocation($event)">
                         <label class="form-check-label" for="flexRadioDefault1">
                           Chennai
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Coimbatore" (change)="changeLocation($event)">
                         <label class="form-check-label" for="flexRadioDefault2">
                           Coimbatore
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Banglore" (change)="changeLocation($event)">
                         <label class="form-check-label" for="flexRadioDefault1">
                           Banglore
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Hyderbad" (change)="changeLocation($event)">
                         <label class="form-check-label" for="flexRadioDefault2">
                           Hyderbad
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Mysore" (change)="changeLocation($event)">
                         <label class="form-check-label" for="flexRadioDefault1">
                           Mysore
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Kochi" (change)="changeLocation($event)">
                         <label class="form-check-label" for="flexRadioDefault2">
                           Kochi
                         </label>
@@ -61,27 +61,33 @@
     <br>
     <div class="row">
         <div class="col-md-4">
-          <div *ngFor="let posts of post" class="card">
-            <img class="card-img-top" src="../../../assets/image/home-bg.jpg" alt="Card image" style="width:auto; height: auto; padding: 0px 10px 0px 10px;">
-            <div class="card-body">
-              <h4 class="card-title"><i class="bi bi-person-fill"></i></h4>
-              <p class="card-text"><i class="bi bi-telephone-fill"></i> 1234567890</p>
-              <p class="card-text"><i class="bi bi-geo-alt"></i> Chennai</p>
-              <a class="btn btn-primary" (click)="openModal()">See Profile</a>
+          <div *ngFor="let posts of post.data" class="card">
+            <div *ngIf="posts.profilePicture != null && posts.profilePicture != undefined; else loading">
+              <img class="card-img-top" src="{{posts.profilePicture}}" alt="" style="width:auto; height: auto; padding: 0px 10px 0px 10px;">
             </div>
-          </div>
+            <ng-template #loading>
+              <img class="card-img-top" src="../../../assets/image/home-bg.jpg" alt="" style="width:auto; height: auto; padding: 0px 10px 0px 10px;">
+            </ng-template>
+            
+            <div class="card-body">
+              <h4 class="card-title"><i class="bi bi-person-fill"></i> {{ posts.firstName }} {{ posts.lastName }}</h4>
+              <p class="card-text"><i class="bi bi-telephone-fill"></i> {{posts.mobileNumber}}</p>
+              <p class="card-text"><i class="bi bi-geo-alt"></i> {{ posts.location }}</p>
+              <a class="btn btn-primary" (click)="openModal(posts.id)">See Profile</a>
+            </div>
+          </div> 
         </div> 
     </div> 
 
-
     <nav class="mt-4" aria-label="Page navigation sample">
-    <ul class="pagination">
-        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-    </ul>
+      <ngb-pagination
+      [collectionSize]="pageSize"
+      [(page)]="page"
+      [maxSize]="5"
+      [rotate]="true"
+      [boundaryLinks]="true"
+      (pageChange)="renderPage($event)"
+    ></ngb-pagination>
     </nav>
 
         </main>
