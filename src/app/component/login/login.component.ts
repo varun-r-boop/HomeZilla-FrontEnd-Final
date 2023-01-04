@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-//import { NgToastService } from 'ng-angular-popup';
-
 import { AuthService } from 'src/app/services/auth.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -18,16 +17,26 @@ export class LoginComponent implements OnInit{
   isText:boolean = false;
   eyeIcon: string = "fa-eye-slash"
   loginForm!: FormGroup;
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
   constructor (
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private storageService: StorageService,
+  
   ) {}
 
 
  
   ngOnInit(): void {
+    if(this.storageService.isLoggedIn()){
+      this.isLoggedIn = true;
+      this.roles = this.storageService.getUser().roles;
+    }
     this.loginForm = this.fb.group({    //grouping the form
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -47,19 +56,22 @@ export class LoginComponent implements OnInit{
       this.auth.login(this.loginForm.value)
       .subscribe({
         next:(res)=>{
-          console.log(res['message']);
-          this.loginForm.reset();
-          //alert("logged in") using tosst message
-          this.auth.storeToken(res['accessToken']); 
-          const tokenPayload = this.auth['decodedToken']();
+          console.log(res['headers'].get('authorization'));
+          this.storageService.saveUser(res['headers'].get('authorization'));
           this['toast!'].success({detail: "SUCCESS", summary: res['message']});
-          this['router'].navigate(['dashboard'])
+
+          this.isLoginFailed = false;
+          this.isLoggedIn = true;
+          this.roles = this.storageService.getUser().roles;
+        //  this.reloadPage();
+       
         },
         error: (err)=>{
-          //alert("something rong") using toaast message
+          
          this['toast!'].error({detail: "ERROR", summary: "Something went wrong!"});
-          console.log(err);
-        },
+         
+          this.isLoginFailed = true;
+        }
       })
 
     }else {
@@ -80,5 +92,8 @@ export class LoginComponent implements OnInit{
         this.validateAllFormFileds(control)
       }
     })
+  }
+  reloadPage(): void {
+    window.location.reload();
   }
 }

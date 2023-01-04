@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Register } from '../models/Register';
 import { Login } from '../models/login';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 @Injectable({
   providedIn: 'root'
 })
@@ -35,7 +39,9 @@ export class AuthService {
     }
 
   login(login: Login): Observable<Login>{
-    return this.http.post<Login>(`${this.baseUrl}Login`, login)
+    return this.http.post<Login>(`${this.baseUrl}Login`, login,  {
+      observe: "response"
+    })
    }
 
    storeToken(tokenValue: string){
