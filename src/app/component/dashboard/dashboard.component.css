@@ -1,0 +1,17 @@
+.profile-container {
+    display: flex;
+  }
+  
+  .profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  
+  .profile-details {
+    margin-left: 20px;
+  }
+
+  .text-white:hover{
+    color: orange !important;
+  }
