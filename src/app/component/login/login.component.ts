@@ -24,8 +24,10 @@ export class LoginComponent implements OnInit{
   constructor (
     private fb: FormBuilder,
     private auth: AuthService,
+    private router: Router,
+    private toast: ToastrService,
     private storageService: StorageService,
-    private router: Router
+  
   ) {}
 
 
@@ -56,6 +58,7 @@ export class LoginComponent implements OnInit{
         next:(res)=>{
           console.log(res['headers'].get('authorization'));
           this.storageService.saveUser(res['headers'].get('authorization'));
+          this.toast.success("Login successful");
 
           this.isLoginFailed = false;
           this.isLoggedIn = true;
@@ -65,7 +68,9 @@ export class LoginComponent implements OnInit{
          this.router.navigate(['/dashboard']);
         },
         error: (err)=>{
-          alert(err?.error.message);
+          
+         this.toast.error("something went wrong");
+         
           this.isLoginFailed = true;
         }
       })

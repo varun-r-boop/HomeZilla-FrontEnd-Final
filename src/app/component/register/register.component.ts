@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Register } from 'src/app/models/Register';
 
 @Component({
   selector: 'app-register',
@@ -20,6 +21,7 @@ export  class RegisterComponent implements OnInit{
   eyeIcon: string = "fa-eye-slash";
 
   signUpForm!  : FormGroup;
+  isSubmitted: boolean = false;
 
  
   constructor (
@@ -39,9 +41,8 @@ export  class RegisterComponent implements OnInit{
       mobileNumber: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required]
-    })
+    });
    
-
     
   }
 
@@ -51,7 +52,11 @@ export  class RegisterComponent implements OnInit{
     this.isText ? this.type = "text" : this.type = "password";
   }
 
+ 
+ 
+
   onSignup(){
+   
     if(this.signUpForm.valid){
 
       console.log(this.signUpForm.value)

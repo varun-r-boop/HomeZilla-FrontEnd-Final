@@ -92,7 +92,7 @@ img{
 }
 
 .bordert:after{
-  content: "or connect with";
+  content: "or connect with";  
   position: absolute;
   top: -13px;
   left: 33%;
@@ -107,7 +107,14 @@ h3{
 
 input, textarea{
     background-color: rgb(34, 32, 32);
+    width: 40px;
+    height: 40px;
+    align-content: space-around;
 }
 ::placeholder{
     color: orange;
+}
+
+.outer .container .panel .table{
+    width: 300px;
 }

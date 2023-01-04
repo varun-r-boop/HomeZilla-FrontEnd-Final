@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Register } from '../models/Register';
 import { Login } from '../models/login';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,12 +20,14 @@ export class AuthService {
   private baseUrl: string = "https://localhost:7263/api/Auth/"
 
   constructor(
-    private http : HttpClient
+    private http : HttpClient,
+    private router: Router
   ) { }
 
   signUp( register: Register): Observable<Register>{
-    return this.http.post<Register>(`${this.baseUrl}Register`, register)
-0  }
+    return this.http.post<Register>(`${this.baseUrl}Register`, register);
+    
+  }
   // signUp( userObj: any) {
   //   this.userEmailId.next(userObj.email);
   //   return this.http.post<any>(`${this.baseUrl}Register`, userObj)
@@ -51,6 +54,14 @@ export class AuthService {
 
    isLoggedIn(): boolean {
     return !!sessionStorage.getItem('auth-user')
+   }
+
+   forgotPassword(email){
+    this['fireauth'].sendPasswordResetEmail(email).then(() => {
+      this['router'].navigate(['verify.email']);
+    }, err=>{
+      alert("somthing went wrong");
+    })
    }
 
 }

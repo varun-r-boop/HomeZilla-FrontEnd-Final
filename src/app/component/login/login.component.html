@@ -27,13 +27,14 @@
               <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password') " class="text-danger">
                 password is required</small>
               <div class="form-inline fr mt-4">
-                <a id="forgot" class="font-weight-bold">forgot password?</a>
+                <a id="forgot" class="font-weight-bold" routerLink="/forgotPassword">forgot password?</a>
               </div>
               <button (click)="onLogin()" type="submit" class="btn btn-primary btn-block mt-4 w-100 " routerLink="/dashboard">Login</button>
               <div class="text-center pt-4 text-muted">Don't have account? <a id="forgot" routerLink="/register">Sign Up</a></div>
             </form>
           </div>
           <div class="mx-3 my-2 py-2 border">
+            <!-- <p >sign in with</p> -->
             <div class="text-center py-3">
               <a href="https://www.facebook.com" target="_blank" class="px-2"><img src="../../../assets/fb.jpg" alt=""></a>
               <a href="https://www.google.com" target="_blank" class="px-2"><img src="../../../assets/google.jpg" alt=""></a>
