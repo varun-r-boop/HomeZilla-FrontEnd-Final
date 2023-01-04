@@ -8,13 +8,18 @@
   </div>
   <div class="modal-body">
     <div class="card">
-        <img class="card-img-top" src="../../../assets/image/home-bg.jpg" alt="Card image" style="width:auto; height: auto; padding: 0px 10px 0px 10px;">
-        <div class="card-body">
-          <p class="card-text"><i class="bi bi-person-fill"></i> Vishal E </p>
-          <p class="card-text"><i class="bi bi-telephone-fill"></i> 1234567890 </p>
-          <p class="card-text"><i class="bi bi-envelope-at-fill"></i> vishal@gmail.com</p>
-          <p class="card-text"><i class="bi bi-geo-alt"></i> Chennai</p>
-          <p class="card-text"><i class="bi bi-card-heading"><b> Description : </b></i>
+      <div *ngIf="providerData.profilePicture != null && providerData.profilePicture != undefined; else loading">
+        <img class="card-img-top" src="{{providerData.profilePicture}}" alt="" style="width:auto; height: auto; padding: 0px 10px 0px 10px;">
+      </div>
+      <ng-template #loading>
+        <img class="card-img-top" src="../../../assets/image/home-bg.jpg" alt="" style="width:auto; height: auto; padding: 0px 10px 0px 10px;">
+      </ng-template>
+      <div class="card-body">
+          <p class="card-text"><i class="bi bi-person-fill"></i> {{providerData.firstName}} {{providerData.lastName}}</p>
+          <p class="card-text"><i class="bi bi-telephone-fill"></i> {{providerData.mobileNumber}} </p>
+          <p class="card-text"><i class="bi bi-envelope-at-fill"></i> {{providerData.email}} </p>
+          <p class="card-text"><i class="bi bi-geo-alt"></i> {{providerData.location}}</p>
+          <p class="card-text"><i class="bi bi-card-heading"><b> {{providerData.description}} </b></i>
           </p>
         </div>
       </div>
@@ -23,26 +28,11 @@
     <div class="card">
         <div class="card-body">
             <table class="table table-striped">
-                <tbody>
+                <tbody *ngFor="let serviceData of providerData.serviceData; let i = index">
                   <tr>
-                    <th scope="row">1</th>
-                    <td>plumber</td>
-                    <td>Rs. 1000</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>plumber</td>
-                    <td>Rs. 1000</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>plumber</td>
-                    <td>Rs. 1000</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>plumber</td>
-                    <td>Rs. 1000</td>
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{serviceData.service}}</td>
+                    <td>Rs. {{serviceData.price}} </td>
                   </tr>
                 </tbody>
               </table>
@@ -55,14 +45,14 @@
             <h4>Book the Provider</h4>
             <select class="form-control" required>
                 <option value="">Choose a Service </option>
-                <option value="Classroom Instruction and Assessment">Classroom Instruction and Assessment</option>
+                <option *ngFor = "let serviceData of providerData.serviceData" value="{{serviceData.service}}">{{serviceData.service}}</option>
             </select>
             <p class="card-text"><i class="bi bi-card-heading"><b> From : </b></i>
                 <input class="picker" type="datetime-local">
             <p class="card-text"><i class="bi bi-card-heading"><b> To : </b></i>
                 <input class="picker" type="datetime-local">
                 <br>
-            <button class="btn btn-primary">Book </button>
+            <button class="btn btn-primary" (click)="book()">Book </button>
         </div>
       </div>
 </div>
