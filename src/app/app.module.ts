@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './component/register/register.component';
 import { LoginComponent } from './component/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule , FormsModule} from '@angular/forms';
 import { VerificationComponent } from './component/verification/verification.component';
 import { NgOtpInputConfig, NgOtpInputModule } from  'ng-otp-input';
 import { AuthService } from './services/auth.service';
@@ -23,6 +23,9 @@ import { CredentialsInterceptor } from './helper/interceptor/credentials.interce
 import { StorageService } from './services/storage.service';
 import { JwtInterceptor } from './helper/interceptor/jwt.interceptor';
 import { NgOtpInputComponent } from 'ng-otp-input';
+import { CurrentOrdersComponent } from './component/dashboard/current-orders/current-orders.component';
+import { OrderDetailsService } from './services/order-details.service';
+import { PastOrdersComponent } from './component/dashboard/past-orders/past-orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,23 +38,25 @@ import { NgOtpInputComponent } from 'ng-otp-input';
     HomeComponent,
     VerificationComponent,
     ForgotPasswordComponent,
-    NgModule,
-  
+    CurrentOrdersComponent,
+    PastOrdersComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     //DropdownModule,
     HttpClientModule,
-    ToastrService,
     NgOtpInputModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
   providers: [ AuthService,
   OtpVerificationService,
   StorageService,
+  OrderDetailsService,
   { provide: ToastrService, useValue: ToastrService },
   { provide: HTTP_INTERCEPTORS, useClass: CredentialsInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

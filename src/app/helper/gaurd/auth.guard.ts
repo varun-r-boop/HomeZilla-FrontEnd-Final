@@ -18,10 +18,12 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if(this.auth.isLoggedIn()){
+      console.log("auth");
       return true
     }
     else {
-      this.toast.error("Please Login First")
+      console.log("authguard");
+      //this.toast.error("Please Login First")
       this.router.navigate(['login'])
       return false;
     }

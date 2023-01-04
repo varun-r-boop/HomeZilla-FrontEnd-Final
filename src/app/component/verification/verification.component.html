@@ -1,27 +1,46 @@
-<div style="min-height: 40rem;" class="container">
+
+
+  
+<div class="outer">
+  <div class="container">
     <div class="row">
-      <div
-        class="col-12 d-flex flex-column justify-content-center align-items-center"
-      >
-  
-        <div class="card border-0 p-5">
-          <div class="text-center cd-text">
-            <h4 class="my-3 fw-bold">Enter Verification Code</h4>
+      <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+        <div class="panel border bg-white">
+          <div class="panel-heading">
+            <h3 class="pt-3 font-weight-bold">Verify Your Email !</h3>
           </div>
-  
-          <ng-otp-input
-            class="m-auto text-center"
-            [config]="config"
-            (onInputChange)="onOtpChange($event)"
-          ></ng-otp-input>
+          <div class="panel-body p-3">
+            <div style="min-height: 6rem;" class="container">
+              <div class="row">
+                <div
+                  class="col-12 d-flex flex-column justify-content-center align-items-center"
+                >
+                
+                  <div class="card border-0 p-5">
+                    <div class="text-center cd-text">
+                      <h4 class="my-3 fw-bold">Enter Verification Code</h4>
+                    </div>
+            
+                    <ng-otp-input
+                      class="m-auto text-center"
+                      [config]="config"
+                      (onInputChange)="onOtpChange($event)"
+                    ></ng-otp-input>
+                  </div>
+                  <button
+                    [disabled]="otp.length != 6"
+                    (click)="submit()"
+                    class="btn button mt-4 button rounded-pill"
+                  >
+                    Verify
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
         </div>
-        <button
-          [disabled]="otp.length != 6"
-          (click)="submit()"
-          class="btn button mt-4 button rounded-pill"
-        >
-          Verify
-        </button>
       </div>
     </div>
   </div>
+</div>  
