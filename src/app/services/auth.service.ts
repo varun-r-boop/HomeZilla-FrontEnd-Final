@@ -34,8 +34,8 @@ export class AuthService {
   // }
 
     signOut(){
-      localStorage.clear();
-      localStorage.removeItem('token')
+      sessionStorage.clear();
+      sessionStorage.removeItem('auth-user')
     }
 
   login(login: Login): Observable<Login>{
@@ -45,15 +45,15 @@ export class AuthService {
    }
 
    storeToken(tokenValue: string){
-    localStorage.setItem('token', tokenValue)
+    sessionStorage.setItem('auth-user', tokenValue)
    }
 
    getToken(){
-    return localStorage.getItem('token')
+    return sessionStorage.getItem('auth-user')
    }
 
    isLoggedIn(): boolean {
-    return !!localStorage.getItem('token')
+    return !!sessionStorage.getItem('auth-user')
    }
 
    forgotPassword(email){

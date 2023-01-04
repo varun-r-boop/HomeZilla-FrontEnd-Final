@@ -17,9 +17,10 @@ export class JwtInterceptor implements HttpInterceptor {
     console.log("okkk");
     if (sessionStorage) {
         
+      var token = `${sessionStorage.getItem("auth-user")}`;
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${sessionStorage.getItem("auth-user")}`,
+          Authorization: `Bearer ${token}`,
         },
       });
     }

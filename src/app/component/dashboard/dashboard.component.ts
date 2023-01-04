@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { Subscription } from 'rxjs';
+import { User } from 'src/app/models/user';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,17 +9,41 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit{
-  public users:any = [];
+  user: User;
+  profilePicture!: File;
   constructor(
-    
-    private router: Router
-  ){}
+    //private api: ApiService
+    private profileService : ProfileService
+  ){
+    this.user = new User();
+  }
 
   ngOnInit () {
     //.api.getUsers()
     //.subscribe((res: any)=>{
       //this.users = res;
-    }
+      
+  }
+
+  // onFileChange(event:any) {
+  //   this.selectedFile = event.target.files[0];
+  // }
+
+  updateProfilePicture() {
+    this.profileService.updateProfilePicture(this.profilePicture).subscribe(
+      (response) => console.log('Success!', response),
+        (error) => console.error('Error!', error)
+    );
+  }
+  onSubmit(){
+  this.profileService.updateProfile(this.user).subscribe(
+        (response) => console.log('Success!', response),
+        (error) => console.error('Error!', error)
+      );
+    
+  }
+    
+
   }
 
   

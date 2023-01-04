@@ -1,0 +1,10 @@
+<div *ngIf="waitingOrders">
+    <div *ngFor="let order of waitingOrders.data">
+      <div>ID: {{ order.id }}</div>
+      <div>Appointment From: {{ order.appointmentFrom | date }}</div>
+      <div>Appointment To: {{ order.appointmentTo | date }}</div>
+      <div>Service: {{ order.serviceName}}</div>
+      <div>Status: {{ order.status }}</div>
+    </div>
+  </div>
+  

@@ -1,0 +1,5 @@
+.card
+{
+    height: 30vh;
+    background: linear-gradient(to top, rgb(175, 107, 29), hsl(32, 100%, 50%)) no-repeat;
+}

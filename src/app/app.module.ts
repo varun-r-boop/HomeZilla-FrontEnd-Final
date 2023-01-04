@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './component/register/register.component';
 import { LoginComponent } from './component/login/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule , FormsModule} from '@angular/forms';
 import { VerificationComponent } from './component/verification/verification.component';
 import { NgOtpInputConfig, NgOtpInputModule } from  'ng-otp-input';
 import { AuthService } from './services/auth.service';
@@ -29,6 +29,9 @@ import { NgOtpInputComponent } from 'ng-otp-input';
 import { ChangePasswordComponent } from './component/change-password/change-password.component';
 
 
+import { CurrentOrdersComponent } from './component/dashboard/current-orders/current-orders.component';
+import { OrderDetailsService } from './services/order-details.service';
+import { PastOrdersComponent } from './component/dashboard/past-orders/past-orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +44,8 @@ import { ChangePasswordComponent } from './component/change-password/change-pass
     HomeComponent,
     VerificationComponent,
     ForgotPasswordComponent,
+    CurrentOrdersComponent,
+    PastOrdersComponent,
     VerifyComponent,
     CurrentOrderComponent,
     PastOrderComponent,
@@ -61,6 +66,7 @@ import { ChangePasswordComponent } from './component/change-password/change-pass
   providers: [ AuthService,
   OtpVerificationService,
   StorageService,
+  OrderDetailsService,
   ToastrService,
   { provide: ToastrService, useValue: ToastrService },
   { provide: HTTP_INTERCEPTORS, useClass: CredentialsInterceptor, multi: true },
