@@ -17,8 +17,10 @@ export class ProfileService {
     return this.http.put<User>('https://localhost:7263/api/Customers/Update-User-Data' , user);
   }
 
-  updateProfilePicture(picture : File): Observable<any>{
-    return this.http.put('https://localhost:7263/api/Customers/Update-Profile',JSON.stringify(picture).split('\\').pop()?.slice(0, -1));
+  updateProfilePicture(picture): Observable<any>{
+    const formData = new FormData();
+    formData.append("file", picture, picture.name);
+    return this.http.put('https://localhost:7263/api/Customers/Update-Profile',formData);
   }
 
 }

@@ -15,7 +15,7 @@ export class PastOrdersComponent {
 
   ngOnInit() {
     console.log("first");
-    this.ordersService.getCurrentOrders(Status.Waiting).subscribe((orders: Orders) => {
+    this.ordersService.getPastOrders(Status.Waiting).subscribe((orders: Orders) => {
       this.waitingOrders = orders;
       console.log("second");
     });

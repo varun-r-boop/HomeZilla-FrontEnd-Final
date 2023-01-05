@@ -50,7 +50,20 @@
                                               <!-- Profile picture help block-->
                                               <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                                               <!-- Profile picture upload button-->
-                                              <button class="btn btn-primary" type="button" (click)="updateProfilePicture()">Upload new image</button>
+                                              <!-- <form  #form="ngForm">
+                                                <input (change)="onChange($event)" type="file" [(ngModel)]="profilePicture" name="profilePicture" required>
+                                              <button (click)="updateProfilePicture()" class="btn btn-primary" type="submit" >Upload new image</button>
+                                              </form> -->
+                                              <div class="text-center">
+                                                    <input class="form-control" type="file" 
+                                                            (change)="onChange($event)">
+                                                  
+                                                    <button (click)="updateProfilePicture()" 
+                                                        class="btn btn-success">
+                                                        Upload
+                                                    </button>
+                                                </div>
+                                              
                                           </div>
                                       </div>
                                   </div>

@@ -33,6 +33,7 @@ export class DashboardComponent implements OnInit{
   }
 
   updateProfilePicture() {
+    
     this.profileService.updateProfilePicture(this.profilePicture).subscribe(
       (response) => console.log('Success!', response),
         (error) => console.error('Error!', error)
@@ -41,9 +42,14 @@ export class DashboardComponent implements OnInit{
   onSubmit(){
   this.profileService.updateProfile(this.user).subscribe(
         (response) => console.log('Success!', response),
-        (error) => console.error('Error!', error)
+
+        (error) => alert(error.error.message)
       );
     
+  }
+  onChange(event)
+  {
+    this.profilePicture = event.target.files[0];
   }
     
 

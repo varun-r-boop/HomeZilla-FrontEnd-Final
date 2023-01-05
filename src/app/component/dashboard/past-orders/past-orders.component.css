@@ -20,7 +20,7 @@ color: white;
 }
 
 thead {
-  background: rgb(44, 42, 42);
+  background: rgb(239, 237, 237);
 }
 
 .toggle-btn {
@@ -53,5 +53,19 @@ thead {
 
 .toggle-btn.active > .inner-circle {
   margin-left: 19px;
+}
+.data{
+    color: orange;
+}
+td{
+    color: orange;
+}
+
+tbody{
+    color: black;
+    background-color: white;
+}
+.badge-success{
+    color: orange;
 }
 

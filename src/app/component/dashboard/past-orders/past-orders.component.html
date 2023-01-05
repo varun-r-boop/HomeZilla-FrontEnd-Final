@@ -42,40 +42,26 @@
                           <div class="col-md-10">
                               <div class="rounded">
                                   <div class="table-responsive table-borderless">
-                                      <table class="table">
-                                          <thead>
-                                              <tr class="text" >
-                                                
-                                                  <th class="text-center">
-                                                     
-                                                  </th>
-                                                  <th>Order Id</th>
-                                                  <th>Service Name</th>
-                                                  <th>Status</th>
-                                                  <th>Appointment From</th>
-                                                  <th>Appointment To</th>
-                                                  <th></th>
-                                                
-                                              </tr>
-                                          </thead>
-                                          <tbody class="table-body">
-                                              <tr class="cell-1">
-                                                  <td class="text-center">
-                                                    
-                                                  </td>
-                                                  <div *ngIf="waitingOrders">
-                                                    <div *ngFor="let order of waitingOrders.data">
+                                    <table class="table table-striped">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Service Name</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Appointment From</th>
+                                            <th scope="col">Appointment To</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody *ngIf="waitingOrders">
+                                                <tr *ngFor="let order of waitingOrders.data">
                                                   <td>{{ order.id}}</td>
                                                   <td>{{ order.serviceName}}</td>
                                                   <td><span class="badge badge-success">{{order.status}}</span></td>
                                                   <td>{{ order.appointmentFrom | date }}</td>
                                                   <td>{{ order.appointmentTo | date }}</td>
-                                                  <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                                </div>
-                                              </div>
-                                              </tr>
-                                              
-                                          </tbody>
+                                               </tr>
+                                          
+                                        </tbody>
                                       </table>
                                   </div>
                               </div>

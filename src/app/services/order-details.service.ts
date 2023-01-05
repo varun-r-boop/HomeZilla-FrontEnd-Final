@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 import { OrderData } from '../models/OrderData';
 import { Orders } from '../models/orders';
 import { Status } from '../models/Status';
+import { BookOrder } from '../models/book-order';
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +45,10 @@ export class OrderDetailsService {
         
       })
     );
+  }
+
+  bookOrder(orderData: BookOrder): Observable<BookOrder>
+  {
+    return this.http.put('https://localhost:7263/BookOrder',orderData);
   }
 }
