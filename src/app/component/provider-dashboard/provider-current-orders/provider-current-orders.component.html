@@ -1,0 +1,47 @@
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+
+<div class="d-flex" id="wrapper">
+    <app-sidenav></app-sidenav>
+     <!-- /#sidebar-wrapper -->
+
+<div class="container bootdey">
+    <div class="panel panel-default panel-order">
+        <div class="panel-heading">
+            <strong>Current Orders</strong>
+            <div class="btn-group pull-right">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">Filter history <i class="fa fa-filter"></i></button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#">Approved orders</a></li>
+                        <li><a href="#">Pending orders</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-1"><img src="https://bootdey.com/img/Content/user_3.jpg" class="media-object img-thumbnail" /></div>
+                <div class="col-md-11">
+                    <div *ngIf="waitingOrders">
+                    <div *ngFor="let order of waitingOrders.data">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right"><label class="label label-danger">Accepted</label></div>
+                            <span><strong>{{order.serviceName}}</strong></span> <span class="label label-info"></span><br />
+                           Appointment Booked from  {{order.appointmentFrom | date :'short'}} to {{order.appointmentTo | date :'short'}} <br />
+                            <a data-placement="top" (click)="acceptOrder(order.id)" class="btn btn-success btn-xs glyphicon glyphicon-ok" title="View">Accept</a>
+                            <a data-placement="top" (click)="declineOrder(order.id)" class="btn btn-danger btn-xs glyphicon glyphicon-trash" title="Danger">Decline</a>
+                        </div>
+                        <div class="col-md-12">order made on: 05/31/2014 by <a href="#">Varun </a></div>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+</div>

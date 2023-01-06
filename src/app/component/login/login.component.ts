@@ -6,6 +6,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 import {MessageService} from 'primeng/api';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import jwtDecode from 'jwt-decode';
+import { TokenPayLoad } from 'src/app/models/Token';
 
 // import { ToastService } from './toast-service';
 // import { ToastsContainer } from './toasts-container.component';
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit{
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  Token: TokenPayLoad = new TokenPayLoad();
   constructor (
     private fb: FormBuilder,
     private auth: AuthService,
@@ -71,10 +74,16 @@ export class LoginComponent implements OnInit{
           
           this.isLoginFailed = false;
           this.isLoggedIn = true;
-          this.roles = this.storageService.getUser().roles;
+          this.Token = this.storageService.getDecodedAccessToken();
         //  this.reloadPage();
+        console.log(this.Token.role);
+        if(this.Token.role=="Customer"){
+          this.router.navigate(['/dashboard']);
+       }
+       else if(this.Token.role=="Provider"){
+         this.router.navigate(['/providers']);
+       }
          
-         this.router.navigate(['/dashboard']);
          alert("Login Successful")
         },
         error: (err)=>{
@@ -101,4 +110,6 @@ export class LoginComponent implements OnInit{
   reloadPage(): void {
     window.location.reload();
   }
+
+  
 }

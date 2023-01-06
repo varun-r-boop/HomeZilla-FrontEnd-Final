@@ -5,6 +5,7 @@ import { OrderData } from '../models/OrderData';
 import { Orders } from '../models/orders';
 import { Status } from '../models/Status';
 import { BookOrder } from '../models/book-order';
+import { orderStatus } from '../models/order-status';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class OrderDetailsService {
 
   constructor(private http: HttpClient) { }
 
-  getCurrentOrders(status: Status): Observable<Orders> {
+  getCurrentOrders(): Observable<Orders> {
     var currentOrders: Orders = {
       currentPage: 1,
       data: [],
@@ -30,7 +31,7 @@ export class OrderDetailsService {
     );
   }
 
-  getPastOrders(status: Status): Observable<Orders> {
+  getPastOrders(): Observable<Orders> {
     var pastOrders: Orders = {
       currentPage: 1,
       data: [],
@@ -50,5 +51,50 @@ export class OrderDetailsService {
   bookOrder(orderData: BookOrder): Observable<BookOrder>
   {
     return this.http.put('https://localhost:7263/BookOrder',orderData);
+  }
+
+  cancelOrder(orderData: BookOrder): Observable<BookOrder>
+  {
+    return this.http.put('https://localhost:7263/CancelOrder',orderData);
+  }
+
+  acceptOrder(orderId: orderStatus) {
+    return this.http.put<string>(`https://localhost:7263/AcceptOrder`, orderId);
+  }
+
+  declineOrder(orderId: string) {
+    return this.http.delete<any>(`https://localhost:7263/DeclineOrder`);
+  }
+
+  getProviderCurrentOrders(): Observable<Orders> {
+    var currentOrders: Orders = {
+      currentPage: 1,
+      data: [],
+      totalPages: 0
+    };
+    return  this.http.get<Orders>('https://localhost:7263/api/Providers/Current-Order').pipe(
+      map((response: Orders ) => {
+        currentOrders = response;
+        console.log(response);
+        return currentOrders;
+        
+      })
+    );
+  }
+  getProvidersPastOrders(): Observable<Orders> {
+    var pastOrders: Orders = {
+      currentPage: 1,
+      data: [],
+      totalPages: 0
+    };
+    return  this.http.get<Orders>('https://localhost:7263/api/Providers/Past-Order').pipe(
+      map((response: Orders ) => {
+        console.log("third");
+        pastOrders = response;
+        console.log(response);
+        return pastOrders;
+        
+      })
+    );
   }
 }

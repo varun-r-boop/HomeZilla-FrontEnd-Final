@@ -17,29 +17,26 @@ import { OtpVerificationService } from './services/otp-verification.service';
 import {ToastrService}from'ngx-toastr';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { CommonModule } from '@angular/common';
-import { VerifyComponent } from './verify/verify.component';
-import { CurrentOrderComponent } from './component/current-order/current-order.component';
-import { PastOrderComponent } from './component/past-order/past-order.component';
-import { CCurrentOrderComponent } from './component/c-current-order/c-current-order.component';
 import { CredentialsInterceptor } from './helper/interceptor/credentials.interceptor';
 import { StorageService } from './services/storage.service';
 import { JwtInterceptor } from './helper/interceptor/jwt.interceptor';
 import { NgOtpInputComponent } from 'ng-otp-input';
-import { ChangePasswordComponent } from './component/change-password/change-password.component';
-
 
 import { CurrentOrdersComponent } from './component/dashboard/current-orders/current-orders.component';
 import { OrderDetailsService } from './services/order-details.service';
 import { PastOrdersComponent } from './component/dashboard/past-orders/past-orders.component';
 import { SearchComponent } from './component/search/search.component';
-import { CommonNavComponent } from './component/common-nav/common-nav.component';
 import { SearchPageComponent } from './component/search-page/search-page.component';
 import { ViewDetailComponent } from './component/view-detail/view-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchService } from './services/search.service';
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { MessageService } from 'primeng/api';
-
+import { ProviderDashboardComponent } from './component/provider-dashboard/provider-dashboard.component';
+import { AnalyticsComponent } from './component/provider-dashboard/analytics/analytics.component';
+import { ProviderCurrentOrdersComponent } from './component/provider-dashboard/provider-current-orders/provider-current-orders.component';
+import { ProviderPastOrdersComponent } from './component/provider-dashboard/provider-past-orders/provider-past-orders.component';
+import { NgToggleModule } from 'ng-toggle-button';
 
 @NgModule({
   declarations: [
@@ -53,16 +50,14 @@ import { MessageService } from 'primeng/api';
     VerificationComponent,
     CurrentOrdersComponent,
     PastOrdersComponent,
-    VerifyComponent,
-    CurrentOrderComponent,
-    PastOrderComponent,
-    CCurrentOrderComponent,
-    ChangePasswordComponent,
     SearchComponent,
     HomeComponent,
-    CommonNavComponent,
     SearchPageComponent,
     ViewDetailComponent,
+    ProviderDashboardComponent,
+    AnalyticsComponent,
+    ProviderCurrentOrdersComponent,
+    ProviderPastOrdersComponent
      ],
   imports: [
     BrowserModule,
@@ -74,7 +69,9 @@ import { MessageService } from 'primeng/api';
     NgbModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    NgToggleModule.forRoot()
+    
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
   providers: [ AuthService,

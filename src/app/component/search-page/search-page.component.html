@@ -60,13 +60,13 @@
     <main class="col-md-9">
     <br>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div *ngFor="let posts of post.data" class="card">
             <div *ngIf="posts.profilePicture != null && posts.profilePicture != undefined; else loading">
               <img class="card-img-top" src="{{posts.profilePicture}}" alt="" style="width:auto; height: auto; padding: 0px 10px 0px 10px;">
             </div>
             <ng-template #loading>
-              <img class="card-img-top" src="../../../assets/image/home-bg.jpg" alt="" style="width:auto; height: auto; padding: 0px 10px 0px 10px;">
+              <img class="card-img-top" src="../../../assets/image/home-bg.png" alt="" style="width:auto; height: auto; padding: 0px 10px 0px 10px;">
             </ng-template>
             
             <div class="card-body">
