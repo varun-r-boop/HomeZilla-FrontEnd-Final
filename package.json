@@ -23,6 +23,7 @@
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "global": "^4.4.0",
+    "jwt-decode": "^3.1.2",
     "ng-angular-popup": "^0.2.0",
     "ng-bootstrap": "^0.46.0",
     "ng-bootstrap-datetime-angular": "^0.1.27",

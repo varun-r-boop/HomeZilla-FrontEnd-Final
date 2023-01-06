@@ -5,6 +5,7 @@ import { NgOtpInputConfig } from 'ng-otp-input';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { OtpVerificationService } from 'src/app/services/otp-verification.service';
+import { ToastService } from 'src/app/services/toast-service';
 
 @Component({
   selector: 'app-verification',
@@ -27,7 +28,7 @@ export class VerificationComponent implements OnInit{
 constructor(
   private router: Router,
   private otpVerificationService: OtpVerificationService,
-  private toaster: ToastrService,
+  private toastService: ToastService,
   private route: ActivatedRoute,
   private authService : AuthService
 ){}
@@ -49,11 +50,11 @@ submit(){
       next: (response: any)=>{
       
           this.router.navigateByUrl('/login');
-          alert(response.message);
+          this.toastService.show('response.message', { classname: 'bg-danger text-light', delay: 3000 });
       },
       error: (err) => {
         console.log('[Verify - ERR]', err);
-        alert('Something went Wrong');
+        this.toastService.show('Something went Wrong', { classname: 'bg-danger text-light', delay: 3000 });
       },
     });
   }

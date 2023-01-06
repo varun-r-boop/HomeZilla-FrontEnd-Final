@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 import {MessageService} from 'primeng/api';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastService } from 'src/app/services/toast-service';
 
 // import { ToastService } from './toast-service';
 // import { ToastsContainer } from './toasts-container.component';
@@ -36,7 +37,8 @@ export class LoginComponent implements OnInit{
     private router: Router,
     private toast: ToastrService,
     private storageService: StorageService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    public toastService: ToastService, 
   
   ) {}
 
@@ -75,16 +77,16 @@ export class LoginComponent implements OnInit{
         //  this.reloadPage();
          
          this.router.navigate(['/dashboard']);
-         alert("Login Successful")
+         this.toastService.show('Login Successful', { classname: 'bg-success text-light', delay: 3000 });
         },
         error: (err)=>{
-          alert(err?.error.message)
+          this.toastService.show(err?.error.message, { classname: 'bg-danger text-light', delay: 3000 });
           this.isLoginFailed = true;
         }
       })
 
     }else {
-      alert("Please Enter the Correct Details")
+      this.toastService.show('PLease Enter Correct Details', { classname: 'bg-danger text-light', delay: 3000 });
     }
   }
 

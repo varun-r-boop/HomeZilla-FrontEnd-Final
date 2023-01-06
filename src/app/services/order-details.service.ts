@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { OrderData } from '../models/OrderData';
 import { Orders } from '../models/orders';
@@ -47,8 +47,11 @@ export class OrderDetailsService {
     );
   }
 
-  bookOrder(orderData: BookOrder): Observable<BookOrder>
+  bookOrder(orderData: BookOrder)
   {
-    return this.http.put('https://localhost:7263/BookOrder',orderData);
+    var res =  this.http.post<any>('https://homezilla360-api.azurewebsites.net/BookOrder',orderData, {
+      responseType: 'text' as 'json'
+    });
+    return res;
   }
 }

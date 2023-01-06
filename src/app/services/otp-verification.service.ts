@@ -12,6 +12,6 @@ export class OtpVerificationService {
 
   verifyOtp(email: string,otp: string){
    
-    return this.http.post('https://localhost:7263/api/Auth/Verify',{email,otp});
+    return this.http.post('https://homezilla360-api.azurewebsites.net/api/Auth/Verify',{email,otp});
   }
 }
