@@ -1,0 +1,42 @@
+    .s004 {
+    min-height: 100vh;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: url("../../../assets/image/home-bg.png");
+    background-size: cover;
+    background-position: center center;
+    padding: 15px;
+  }
+  .s004 form {
+    width: 100%;
+    max-width: 790px;
+  }
+  
+  .s004 form legend {
+    font-size: 36px;
+    color: rgb(12, 12, 11);
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  
+  .s004 form .suggestion-wrap span {
+    font-size: 15px;
+    font-family: 'Helvetica', sans-serif;
+    display: inline-block;
+    padding: 0 15px;
+    line-height: 32px;
+    color: rgb(7, 7, 7);
+    border-radius: 16px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  ::placeholder { 
+    color: orange;
+  }

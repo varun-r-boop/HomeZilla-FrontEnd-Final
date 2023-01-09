@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import jwtDecode from 'jwt-decode';
+import { TokenPayLoad } from '../models/Token';
 
 const USER_KEY = 'auth-user';
 
@@ -6,6 +8,7 @@ const USER_KEY = 'auth-user';
   providedIn: 'root'
 })
 export class StorageService {
+  storageService: any;
   constructor() {}
 
   clean(): void {
@@ -20,10 +23,10 @@ export class StorageService {
   public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
-      return JSON.parse(user);
+      return user;
     }
 
-    return {};
+    return null;
   }
 
   public isLoggedIn(): boolean {
@@ -33,5 +36,9 @@ export class StorageService {
     }
 
     return false;
+  }
+
+  public getDecodedAccessToken(): TokenPayLoad {
+      return jwtDecode(this.getUser());
   }
 }

@@ -1,7 +1,10 @@
-.outer
+.outer 
 {
-    height: 100vh;
-    background: linear-gradient(to top, #c9c9ff, #f2aa4cff) no-repeat;
+    height: auto;
+    background: linear-gradient(to top, rgb(44, 42, 42), hsl(32, 100%, 50%)) no-repeat;
+}
+body{
+    background-color: linear-gradient(to top, rgb(44, 42, 42), hsl(32, 100%, 50%)) no-repeat;
 }
 
 .panel-heading{
@@ -21,7 +24,7 @@ a:hover{
 
 a{
     text-decoration: none;
-    color: orange;
+    color: hsl(32, 100%, 50%);
 }
 
 .form-inline label{
@@ -30,23 +33,21 @@ a{
     cursor: pointer;
 }
 
-.btn{
-    margin-top: 20px;
-    border-radius: 15px;
-}
+
 .btn-block{
-    color: white;
-    background-color: rgb(247, 165, 14);
+    border: hsl(32, 100%, 50%);
+    background-color: hsl(32, 100%, 50%);
 }
 
 .btn:hover{
-    background-color: rgb(247, 165, 14);
+    background-color: hsl(32, 100%, 50%);
 }
 .panel{
     min-height: 380px;
-    box-shadow: 20px 20px 80px rgb(218, 218, 218);
+    box-shadow: 20px 20px 80px rgb(44, 42, 42);
     border-radius: 12px;
     margin-top: 100px;
+    border: rgb(44, 42, 42);
 }
 
 .input-field{
@@ -55,8 +56,8 @@ a{
     display: flex;
     align-items: center;
     cursor: pointer;
-    border: 1px solid #ddd;
-    color: #f2aa4cff
+    border: 1px solid rgb(120, 118, 118);
+    color: hsl(32, 100%, 50%);
 }
 
 .input-field.error{
@@ -64,13 +65,6 @@ a{
     color: red;
 }
 
-input[type='text'],
-input[type='password'] {
-    border: none;
-    outline: none;
-    box-shadow: none;
-    width: 100%;
-}
 
 .fa-eye-slash.btn{
     border: none;
@@ -87,7 +81,7 @@ img{
 }
 
 .bordert{
-  border-top: 1px solid #aaa;
+  border-top: 1px solid rgb(44, 42, 42);
   position: relative;
 }
 
@@ -96,25 +90,76 @@ img{
   position: absolute;
   top: -13px;
   left: 33%;
-  background-color: #fff;
+  background-color: rgb(44, 42, 42);
   padding: 0 8px;
 
 }
 
 h3{
-    color: orange;
+    color: hsl(32, 100%, 50%);
 }
 
 input, textarea{
-    background-color: rgb(34, 32, 32);
-    width: 40px;
-    height: 40px;
-    align-content: space-around;
+    border: none;
+    /* height: 40px;
+    align-content: space-around; */
+    background-color: rgb(44, 42, 42);
 }
 ::placeholder{
-    color: orange;
+    color: hsl(32, 100%, 50%);
+}
+
+.text-muted
+{
+    color: white;
+}
+.modal-backdrop {  
+    display: none;    
 }
 
 .outer .container .panel .table{
     width: 300px;
 }
+
+
+
+
+
+
+
+
+
+
+
+.btn{
+
+    margin-top: 20px;
+
+    border-radius: 15px;
+
+}
+
+
+
+
+
+
+
+
+
+input[type='text'],
+
+input[type='password'] {
+
+    border: none;
+
+    outline: none;
+
+    box-shadow: none;
+
+    width: 100%;
+
+    color: white;
+
+}
+

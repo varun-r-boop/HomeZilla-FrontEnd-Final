@@ -1,201 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="assets/css/dashboard.css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="assets/css/dashboard.css" href="styles.css" />
-    <title>Bootstap 5 Responsive Admin Dashboard</title>
-</head>
+<app-common-nav></app-common-nav>
+<body class="bod">
+  <div class="d-flex" id="wrapper">
+    <app-sidenav></app-sidenav>
+      
+      <!-- /#sidebar-wrapper -->
 
-<body>
-    <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
-        <div class="bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
-                    class="fas fa-user-secret me-2"></i>HomeZilla</div>
-            <div class="list-group list-group-flush my-3">
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                        class="fas fa-tachometer-alt me-2" ></i>Hi, Welocmeback!!</a>
-                <!-- <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                        class="fas fa-tachometer-alt me-2"></i >Hi, Welcomeback!!</a> -->
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+          <nav class="navbar navbar-expand-lg navbar-light bg-transparent  px-4">
+              <div class="d-flex align-items-center">
+                  <!-- <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i> -->
+                  <h2 class="fs-2 m-0">Hi, Welcomeback!!</h2>
+              </div>
 
-                <!-- <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-project-diagram me-2" routerLink="/dashboard"></i >Profile</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                  aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
 
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-chart-line me-2" routerLink="/c-current-order"></i >current Order</a>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                      
+                  </ul>
+              </div>
+          </nav>
 
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-paperclip me-2" routerLink="/past-order"></i>Past Oder</a> -->
-                        <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                        <div class="text-center pt-4 text-muted">
-                           <a id="forgot" routerLink="/dashboard">Profile</a>
-                        </div></a>
-                        <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                        <div class="text-center pt-4 text-muted">
-                          <a id="forgot" routerLink="/current-order">Current Order</a>
-                       </div></a>
-                       <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                       <div class="text-center pt-4 text-muted">
-                        <a id="forgot" routerLink="/past-order">Past Order</a>
-                     </div></a>
+              <div class="row  ">
+                  <!-- <h3 class="fs-4 mb-3">Profile</h3> -->
+                  <div class="col">
+                      <table class="table bg-white rounded table-hover">
+                          <!-- <thead> -->
+                            <div class="container-xl px-4 mt-4">
+                              <!-- Account page navigation-->
+                              <nav class="nav nav-borders">
+                                  <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Profile</a>
                 
-            </div>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Hi, Welcomeback!!</h2>
-                </div>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li >
-                            
-                                <img src="../../../assets/user.png">John Doe
-                         
-                            <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
-                            </ul> -->
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-
-            <div class="container-fluid px-4">
-                <div class="row g-3 my-2">
-                </div>
-                <form (ngSubmit)="onSubmit()" #userForm="ngForm">
-                  <label for="firstName">First Name:</label>
-                  <input type="text" id="firstName" [(ngModel)]="user.FirstName" name="firstName" required>
-                  <br>
-                  <label for="lastName">Last Name:</label>
-                  <input type="text" id="lastName" [(ngModel)]="user.LastName" name="lastName" required>
-                  <br>
-                  <label for="email">Email:</label>
-                  <input type="email" id="email" [(ngModel)]="user.Email" name="email" required>
-                  <br>
-                  <label for="userName">UserName:</label>
-                  <input type="text" id="userName" [(ngModel)]="user.UserName" name="userName" required>
-                  <br>
-                  <label for="mobileNumber">Mobile Number:</label>
-                  <input type="tel" id="mobileNumber" [(ngModel)]="user.MobileNumber" name="mobileNumber" required>
-                  <br>
-                  <label for="address">Address:</label>
-                  <input type="text" id="address" [(ngModel)]="user.Address" name="address" required>
-                  <br>
-                  <!-- <label for="profilePicture">Profile Picture:</label>
-                  <input type="file" id="profilePicture" (change)="onFileChange($event)" accept="image/*" name="profilePicture">
-                  <br> -->
-                  <button type="submit" [disabled]="!userForm.form.valid">Save</button>
-                </form>
-                <form (ngSubmit)="updateProfilePicture()" #form="ngForm">
-                  <input type="file" [(ngModel)]="profilePicture" name="profilePicture" required>
-                  <button type="submit">Update Profile Picture</button>
-                </form>
-                
-                <div class="row my-5">
-                    <!-- <h3 class="fs-4 mb-3">Profile</h3> -->
-                    <div class="col">
-                        <table class="table bg-white rounded shadow-sm  table-hover">
-                            <!-- <thead> -->
-                                <div class="profile py-4">
-                                    <div class="container">
-                                      <div class="row">
-                                        
-                                            <!-- <div class="card-header bg-transparent text-center">
-                                              <img class="profile_img" src="../../assets/user.png" alt="user dp">
-                                              <h3>John Lee</h3>
-                                            </div> -->
-                                          
-                                          
-                                        <div class="col-lg-8">
-                                            <div class="card shadow-sm w-100">
-                                                <div class="card-header bg-transparent border-0">
-                                                  <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Profile</h3>
+                              </nav>
+                              <hr class="mt-0 mb-4">
+                              <div class="row">
+                                  <div class="col-xl-4">
+                                      <!-- Profile picture card-->
+                                      <div class="card mb-4 mb-xl-0">
+                                          <div class="card-header">Profile Picture</div>
+                                          <div class="card-body text-center">
+                                              <!-- Profile picture image-->
+                                              <img class="img-account-profile rounded-circle mb-2" [src] ="user.profilePicture" alt="">
+                                              <!-- Profile picture help block-->
+                                              <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                                              <!-- Profile picture upload button-->
+                                              <!-- <form  #form="ngForm">
+                                                <input (change)="onChange($event)" type="file" [(ngModel)]="profilePicture" name="profilePicture" required>
+                                              <button (click)="updateProfilePicture()" class="btn btn-primary" type="submit" >Upload new image</button>
+                                              </form> -->
+                                              <div class="text-center">
+                                                    <input class="form-control" type="file" 
+                                                            (change)="onChange($event)">
+                                                  
+                                                    <button (click)="updateProfilePicture()" 
+                                                        class="btn btn-success">
+                                                        Upload
+                                                    </button>
                                                 </div>
-                                                <div class="d-flex flex-row">
-                                                  <div class="col-md-4 border-right">
-                                                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="../../../assets/user.png" width="100"><span class="font-weight-bold">John Lee</span></div>
-                                                </div>
-                                                
-                                                <div class="col-md-8">
-                                                    <div class="p-3 py-5">
-                                                        <div class="d-flex justify-content-between align-items-center mb-3">
-                                                            <div class="d-flex flex-row align-items-center back"><i ></i>
-                                                                <h6></h6>
-                                                            </div>
-                                                            <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-right mr-1 mb-1"></i>
-                                                            <h6 class="text-right">Edit Profile</h6>
-                                                        </div>
-                                                        </div>
-                                                        <div class="row mt-2">
-                                                            <div class="col-md-6"><input type="text" class="form-control" placeholder="first name" value="John"></div>
-                                                            <div class="col-md-6"><input type="text" class="form-control" value="Lee" placeholder="last name"></div>
-                                                        </div>
-                                                      
-                                                        <div class="row mt-3">
-                                                            <div class="col-md-6"><input type="text" class="form-control" placeholder="Email" value="john_lee12@gmail.com"></div>
-                                                            <div class="col-md-6"><input type="text" class="form-control" value="6859696687" placeholder="Phone number"></div>
-                                                        </div>
-                                                      
-                                                        <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
-                                                    </div>
-                                                </div>
-    
-                                                </div>
-                                                
+                                              
                                           </div>
-                                            <div style="height: 26px"></div>
-                                          <!-- <div class="card shadow-sm">
-                                            <div class="card-header bg-transparent border-0">
-                                              <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Description</h3>
-                                            </div>
-                                            <div class="card-body pt-0">
-                                                <p>Plumbing is any system that conveys fluids for a wide range of applications. Plumbing uses pipes, valves, plumbing fixtures, tanks, and other apparatuses to convey fluids. Heating and cooling (HVAC), waste removal, and potable water delivery are among the most common uses for plumbing, but it is not limited to these applications. The word derives from the Latin for lead, plumbum, as the first effective pipes used in the Roman era were lead pipes</p>
-                                            </div>
-                                          </div> -->
-                                        </div>
                                       </div>
-                                    </div>
                                   </div>
+                                  <div class="col-xl-8">
+                                      <!-- Account details card-->
+                                      <div class="card mb-4">
+                                          <div class="card-header">Account Details</div>
+                                          <div class="card-body">
+                                              <form>
+                                                  <!-- Form Group (username)-->
+                                                  <div class="mb-3">
+                                                      <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                                                      <input class="form-control" id="inputUsername" [(ngModel)]="user.userName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your username" value={{user.userName}}>
+                                                  </div>
+                                                  <!-- Form Row-->
+                                                  <div class="row gx-3 mb-3">
+                                                      <!-- Form Group (first name)-->
+                                                      <div class="col-md-6">
+                                                          <label class="small mb-1" for="inputFirstName">First Name</label>
+                                                          <input class="form-control" id="inputFirstName" [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your first name" value={{user.firstName}}>
+                                                      </div>
+                                                      <!-- Form Group (last name)-->
+                                                      <div class="col-md-6">
+                                                          <label class="small mb-1" for="inputLastName">Last Name</label>
+                                                          <input class="form-control" id="inputLastName" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your last name" value={{user.lastName}}>
+                                                      </div>
+                                                  </div>
+                                                 
+                                                  <!-- Form Group (email address)-->
+                                                  <div class="mb-3">
+                                                      <label class="small mb-1" for="inputEmailAddress">Address</label>
+                                                      <input class="form-control" id="inputEmailAddress" [(ngModel)]="user.address" [ngModelOptions]="{standalone: true}" type="email" placeholder="Enter your Address" value={{user.address}}>
+                                                  </div>
+                                                  <!-- Form Row-->
+                                                  <div class="row gx-3 mb-3">
+                                                      <!-- Form Group (phone number)-->
+                                                      <div class="col-md-6">
+                                                          <label class="small mb-1" for="inputPhone">Phone Number</label>
+                                                          <input class="form-control" id="inputPhone" [(ngModel)]="user.mobileNumber" [ngModelOptions]="{standalone: true}" type="tel" placeholder="Enter your phone number" value={{user.mobileNumber}}>
+                                                      </div>
+                                                      <!-- Form Group (birthday)-->
+                                                      <div class="col-md-6">
+                                                          <label class="small mb-1" for="inputBirthday">Email</label>
+                                                          <input class="form-control" id="inputBirthday" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" type="text" name="birthday" placeholder="Enter your Email" value={{user.email}}>
+                                                      </div>
+                                                  </div>
+                                                  <!-- Save changes button-->
+                                                  <button class="btn btn-primary" type="button" (click)="onSubmit()">Save changes</button>
+                                              </form>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                             
+                      </table>
+                  </div>
+              </div>
 
-                               
-                        </table>
-                    </div>
-                </div>
+          </div>
+      </div>
+  
+  <!-- /#page-content-wrapper -->
+  
 
-            </div>
-        </div>
-    </div>
-    <!-- /#page-content-wrapper -->
-    
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        var el = document.getElementById("wrapper");
-        var toggleButton = document.getElementById("menu-toggle");
-
-        toggleButton.onclick = function () {
-            el.classList.toggle("toggled");
-        };
-    </script>
+ 
 </body>
-
-</html>
+<!-- 
+</html> -->

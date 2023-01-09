@@ -15,7 +15,7 @@ export class CurrentOrdersComponent implements OnInit{
 
   ngOnInit() {
     console.log("first");
-    this.ordersService.getCurrentOrders(Status.Waiting).subscribe((orders: Orders) => {
+    this.ordersService.getCurrentOrders().subscribe((orders: Orders) => {
       this.waitingOrders = orders;
       console.log("second");
     });

@@ -1,0 +1,242 @@
+<app-common-nav></app-common-nav>
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<body class="bod">
+    <div class="d-flex" id="wrapper">
+      <app-sidenav></app-sidenav>
+        <!-- /#sidebar-wrapper -->
+  
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent  px-4">
+                <div class="d-flex align-items-center">
+                    <!-- <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i> -->
+                    <h2 class="fs-2 m-0">Hi, Welcomeback!!</h2>
+                </div>
+  
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+  
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        
+                    </ul>
+                </div>
+            </nav>
+  
+                <div class="row  ">
+                    <!-- <h3 class="fs-4 mb-3">Profile</h3> -->
+                    <div class="col">
+                        <table class="table bg-white rounded table-hover">
+                            <!-- <thead> -->
+                              <div class="container-xl px-4 mt-4">
+                                <!-- Account page navigation-->
+                                <nav class="nav nav-borders">
+                                    <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Profile</a>
+                  
+                                </nav>
+                                <hr class="mt-0 mb-4">
+                                <div class="row">
+                                    <div class="col-xl-4">
+                                        <!-- Profile picture card-->
+                                        <div class="card mb-4 mb-xl-0">
+                                            <div class="card-header">Profile Picture</div>
+                                            <div class="card-body text-center">
+                                                <!-- Profile picture image-->
+                                                <img class="img-account-profile rounded-circle mb-2" [src] ="user.profilePicture" alt="">
+                                                <!-- Profile picture help block-->
+                                                <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                                                <!-- Profile picture upload button-->
+                                                <!-- <form  #form="ngForm">
+                                                  <input (change)="onChange($event)" type="file" [(ngModel)]="profilePicture" name="profilePicture" required>
+                                                <button (click)="updateProfilePicture()" class="btn btn-primary" type="submit" >Upload new image</button>
+                                                </form> -->
+                                                <div class="text-center">
+                                                      <input class="form-control" type="file" 
+                                                              (change)="onChange($event)">
+                                                    
+                                                      <button (click)="updateProviderProfilePicture()" 
+                                                          class="btn btn-success">
+                                                          Upload
+                                                      </button>
+                                                  </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8">
+                                        <!-- Account details card-->
+                                        <div class="card mb-4">
+                                            <div class="card-header">Account Details</div>
+                                            <div class="card-body">
+                                                <form>
+                                                    <!-- Form Group (username)-->
+                                                    <div class="mb-3">
+                                                        <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                                                        <input class="form-control" id="inputUsername" [(ngModel)]="user.userName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your username" value={{user.userName}}>
+                                                    </div>
+                                                    <!-- Form Row-->
+                                                    <div class="row gx-3 mb-3">
+                                                        <!-- Form Group (first name)-->
+                                                        <div class="col-md-6">
+                                                            <label class="small mb-1" for="inputFirstName">First Name</label>
+                                                            <input class="form-control" id="inputFirstName" [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your first name" value={{user.firstName}}>
+                                                        </div>
+                                                        <!-- Form Group (last name)-->
+                                                        <div class="col-md-6">
+                                                            <label class="small mb-1" for="inputLastName">Last Name</label>
+                                                            <input class="form-control" id="inputLastName" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your last name" value={{user.lastName}}>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                    <!-- Form Group (email address)-->
+                                                    <div class="mb-3">
+                                                        <label class="small mb-1" for="inputEmailAddress">Address</label>
+                                                        <input class="form-control" id="inputEmailAddress" [(ngModel)]="user.address" [ngModelOptions]="{standalone: true}" type="email" placeholder="Enter your Address" value={{user.address}}>
+                                                    </div>
+                                                    <!-- Form Row-->
+                                                    <div class="row gx-3 mb-3">
+                                                        <!-- Form Group (phone number)-->
+                                                        <div class="col-md-6">
+                                                            <label class="small mb-1" for="inputPhone">Phone Number</label>
+                                                            <input class="form-control" id="inputPhone" [(ngModel)]="user.mobileNumber" [ngModelOptions]="{standalone: true}" type="tel" placeholder="Enter your phone number" value={{user.mobileNumber}}>
+                                                        </div>
+                                                        <!-- Form Group (birthday)-->
+                                                        <div class="col-md-6">
+                                                            <label class="small mb-1" for="inputBirthday">Email</label>
+                                                            <input class="form-control" id="inputBirthday" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" type="text" name="birthday" placeholder="Enter your Email" value={{user.email}}>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Save changes button-->
+                                                    <button class="btn btn-primary" type="button" (click)="onSubmit()">Save changes</button>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                        
+                                    </div>
+                                    
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-header">
+                                          Services:
+                                        </div>
+                                        <div >
+                                            <br>
+                                            <ng-toggle
+                                            [(value)]="value"
+                                                    [color]="{
+                                                        unchecked: 'red',
+                                                        checked: 'green'
+                                                        
+                                                    }"
+                                                    (change)="onPlumber($event)"
+                                                    >    </ng-toggle>
+                                                    <br>
+                                                    <p>Plumber</p>
+                                                    
+                                                    <ng-toggle
+                                                    
+                                                    [color]="{
+                                                        unchecked: 'red',
+                                                        checked: 'green'
+                                                    }"
+                                                    (change)="onCarpenter($event)">    </ng-toggle>
+                                                    <br>
+                                                    <p>Carpenter</p>
+                                                    <ng-toggle
+                                                    [value]=""
+                                                    [color]="{
+                                                        unchecked: 'red',
+                                                        checked: 'green'
+                                                    }"
+                                                    (change)="onHouseKeeper($event)">    </ng-toggle>
+                                                    <br>
+                                                    <p>HouseKeeper</p>
+                                                    <ng-toggle
+                                                    [value]=""
+                                                    [color]="{
+                                                        unchecked: 'red',
+                                                        checked: 'green'
+                                                    }"
+                                                    (change)="onElectrician($event)">    </ng-toggle>
+                                                    <br>
+                                                    <p>Electrician</p>
+                                        </div>
+                                         
+                                                
+                                      </div>
+
+                                      <!-- <ng-template #cardTemplate let-service="service">
+                                        <div class="card m-3">
+                                          <div class="card-body">
+                                            <h5 class="card-title">{{ service.name }}</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">{{ service.price | currency }}</h6>
+                                            <div class="form-check">
+                                              <input class="form-check-input" type="checkbox" value="" (change)="addService(service)">
+                                              <label class="form-check-label">Select</label>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </ng-template>
+                                      
+                                      <div class="d-flex flex-wrap">
+                                        <ng-container *ngFor="let service of services">
+                                          <ng-container *ngTemplateOutlet="cardTemplate; context: { service: service }"></ng-container>
+                                        </ng-container>
+                                      </div> -->
+                                      
+                                      <!-- <form (ngSubmit)="getServices()" #serviceForm="ngForm">
+                                        <div class="form-group">
+                                          <label for="name">Name</label>
+                                          <input type="text" class="form-control"  name="name" id="name" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="price">Price</label>
+                                          <input type="number" class="form-control"  name="price" id="price" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" [disabled]="!serviceForm.form.valid">Add Service</button>
+                                      </form> -->
+                                      
+
+                                      <!-- <div class="d-flex flex-wrap">
+                                        <ng-container *ngFor="let service of services">
+                                          <ng-container *ngTemplateOutlet="cardTemplate; context: { service: service }"></ng-container>
+                                        </ng-container>
+                                        <ng-template #cardTemplate let-service="service">
+                                            <div class="cards m-3" style="width: 18rem;">
+                                              <div class="card-body" >
+                                                <h5 class="card-title">{{ service.service }}</h5>
+                                                <p class="charges" >Your hourly charges</p>
+                                                <h6 class="card-subtitle mb-2 " style="color: greenyellow">{{ service.price | currency }}</h6>
+                                                <button class="btn btn-success mr-2" (click)="updateService(service)">Edit</button>
+                                                <button class="btn btn-danger" (click)="deleteService(service)">Delete</button>
+                                              </div>
+                                            </div>
+                                          </ng-template>
+                                      </div>
+                                       -->
+                                      
+                                      
+                                     
+                                </div>
+                            </div>
+                               
+                        </table>
+                    </div>
+                </div>
+  
+            </div>
+        </div>
+    
+    <!-- /#page-content-wrapper -->
+    
+    
+  </body>
+  <!-- 
+  </html> -->
+  
+
+    

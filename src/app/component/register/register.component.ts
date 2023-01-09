@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { ToastrService } from 'ngx-toastr';
+import { ToastService } from 'src/app/services/toast-service';
 import { Router } from '@angular/router';
 import { Register } from 'src/app/models/Register';
 
@@ -28,7 +28,7 @@ export  class RegisterComponent implements OnInit{
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private toast: ToastrService    
+    private toastService: ToastService 
   ) {}
 
 
@@ -65,22 +65,17 @@ export  class RegisterComponent implements OnInit{
       .subscribe({
         next:(res)=> {
           console.log(this.signUpForm.value)
-          alert(res['message'])
-          this.router.navigate(['/verification'],{queryParams:{email:this.email}});
+          this.toastService.show(res['message'], { classname: 'bg-success text-light', delay: 3000 });
+          this.router.navigate(['/verification']);
         },
         error: (err=> {
-          alert(err?.error.message)
+          this.toastService.show(err?.error.message, { classname: 'bg-danger text-light', delay: 3000 });
         })
       })
     }else {
-
-      console.log("Form is not valid");
-      //error using toaster
-      this.validateAllFormFileds(this.signUpForm);
-      alert("Your form is invalid")
+      this.toastService.show('Enter All the required Fields', { classname: 'bg-danger text-light', delay: 3000 });
     }
-  }
-
+  };
   
   private validateAllFormFileds(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(field => {
