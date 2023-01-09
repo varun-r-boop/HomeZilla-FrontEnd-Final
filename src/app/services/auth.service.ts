@@ -5,7 +5,6 @@ import { Register } from '../models/Register';
 import { Login } from '../models/login';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { ResetPassword } from '../models/resetPassword';
 import { ChangePassword } from '../models/changePassword';
 
@@ -24,8 +23,7 @@ export class AuthService {
 
   constructor(
     private http : HttpClient,
-    private router: Router,
-    private toastr: ToastrService
+    private router: Router
   ) { }
 
   // signUp( register: Register): Observable<Register>{

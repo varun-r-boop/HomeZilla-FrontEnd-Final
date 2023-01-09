@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Route, Router } from '@angular/router';
 import { NgOtpInputConfig } from 'ng-otp-input';
-import { ToastrService } from 'ngx-toastr';
+import { ToastService } from 'src/app/services/toast-service';
 import { ResetPassword } from '../../models/resetPassword';
 import { AuthService } from '../../services/auth.service';
 
@@ -33,7 +33,7 @@ export class ResetPasswordComponent implements OnInit{
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private toast: ToastrService
+    private toastService: ToastService
   ){}
   ngOnInit(): void {
     this.auth.userEmailId.subscribe((email)=>{
@@ -61,13 +61,12 @@ updatePassword(){
   this.auth.resetPassword(this.resetPasswordInfo).subscribe({
     next: (res) => {
       console.log(res);
-      
-      this.toast.success("changed password succeessfully");
+      this.toastService.show('Reset password email sent successful', { classname: 'bg-success text-light', delay: 3000 });
       this.router.navigateByUrl('/dashboard');
     },
     error: (err) => {
-      console.log(err); 
-    this.toast.error("something went wrong");
+      console.log(err);  
+      this.toastService.show('Something went wrong', { classname: 'bg-success text-light', delay: 3000 });
     }
   })
 }

@@ -14,13 +14,11 @@ import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HomeComponent } from './component/home/home.component';
 import { OtpVerificationService } from './services/otp-verification.service';
-import {ToastrService}from'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { CredentialsInterceptor } from './helper/interceptor/credentials.interceptor';
 import { StorageService } from './services/storage.service';
 import { JwtInterceptor } from './helper/interceptor/jwt.interceptor';
 import { NgOtpInputComponent } from 'ng-otp-input';
-import { ChangePasswordComponent } from './component/change-password/change-password.component';
 import { CurrentOrdersComponent } from './component/dashboard/current-orders/current-orders.component';
 import { OrderDetailsService } from './services/order-details.service';
 import { PastOrdersComponent } from './component/dashboard/past-orders/past-orders.component';
@@ -41,6 +39,7 @@ import { AnalyticsComponent } from './component/provider-dashboard/analytics/ana
 import { ProviderCurrentOrdersComponent } from './component/provider-dashboard/provider-current-orders/provider-current-orders.component';
 import { ProviderPastOrdersComponent } from './component/provider-dashboard/provider-past-orders/provider-past-orders.component';
 import { NgToggleModule } from 'ng-toggle-button';
+import { CommonNavComponent } from './component/common-nav/common-nav.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +62,8 @@ import { NgToggleModule } from 'ng-toggle-button';
     ProviderDashboardComponent,
     AnalyticsComponent,
     ProviderCurrentOrdersComponent,
-    ProviderPastOrdersComponent
+    ProviderPastOrdersComponent,
+    CommonNavComponent
      ],
   imports: [
     BrowserModule,
@@ -84,7 +84,6 @@ import { NgToggleModule } from 'ng-toggle-button';
   OtpVerificationService,
   StorageService,
   OrderDetailsService,
-  ToastrService,
   SearchService,
   {provide: MessageService, useValue: MessageService},
   { provide: HTTP_INTERCEPTORS, useClass: CredentialsInterceptor, multi: true },

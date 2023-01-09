@@ -1,7 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 import {MessageService} from 'primeng/api';
@@ -38,7 +37,6 @@ export class LoginComponent implements OnInit{
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private toast: ToastrService,
     private storageService: StorageService,
     private messageService: MessageService,
     public toastService: ToastService, 
@@ -80,13 +78,12 @@ export class LoginComponent implements OnInit{
         //  this.reloadPage();
         console.log(this.Token.role);
         if(this.Token.role=="Customer"){
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/home']);
        }
        else if(this.Token.role=="Provider"){
          this.router.navigate(['/providers']);
        }
          
-         this.router.navigate(['/dashboard']);
          this.toastService.show('Login Successful', { classname: 'bg-success text-light', delay: 3000 });
         },
         error: (err)=>{

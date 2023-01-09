@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenPayLoad } from 'src/app/models/Token';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 
@@ -8,9 +10,11 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./common-nav.component.css']
 })
 export class CommonNavComponent implements OnInit {
+  Token: TokenPayLoad = new TokenPayLoad();
   constructor(
     private storageService: StorageService, 
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
     )
   {
 
@@ -31,6 +35,12 @@ export class CommonNavComponent implements OnInit {
   }
   profile()
   {
-    
+    this.Token = this.storageService.getDecodedAccessToken();
+    if(this.Token.role=="Customer"){
+      this.router.navigate(['/dashboard']);
+   }
+   else if(this.Token.role=="Provider"){
+     this.router.navigate(['/providers']);
+   }
   }
 }

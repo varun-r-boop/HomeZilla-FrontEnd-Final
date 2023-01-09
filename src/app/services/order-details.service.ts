@@ -20,7 +20,7 @@ export class OrderDetailsService {
       data: [],
       totalPages: 0
     };
-    return  this.http.get<Orders>('https://localhost:7263/api/Customers/Current-Order').pipe(
+    return  this.http.get<Orders>('https://homezilla360-api.azurewebsites.net/api/Customers/Current-Order').pipe(
       map((response: Orders ) => {
         console.log("third");
         currentOrders = response;
@@ -37,7 +37,7 @@ export class OrderDetailsService {
       data: [],
       totalPages: 0
     };
-    return  this.http.get<Orders>('https://localhost:7263/api/Customers/Past-Order').pipe(
+    return  this.http.get<Orders>('https://homezilla360-api.azurewebsites.net/api/Customers/Past-Order').pipe(
       map((response: Orders ) => {
         console.log("third");
         pastOrders = response;
@@ -58,15 +58,15 @@ export class OrderDetailsService {
 
   cancelOrder(orderData: BookOrder): Observable<BookOrder>
   {
-    return this.http.put('https://localhost:7263/CancelOrder',orderData);
+    return this.http.put('https://homezilla360-api.azurewebsites.net/CancelOrder',orderData);
   }
 
   acceptOrder(orderId: orderStatus) {
-    return this.http.put<string>(`https://localhost:7263/AcceptOrder`, orderId);
+    return this.http.put<string>(`https://homezilla360-api.azurewebsites.net/AcceptOrder`, orderId);
   }
 
   declineOrder(orderId: string) {
-    return this.http.delete<any>(`https://localhost:7263/DeclineOrder`);
+    return this.http.delete<any>(`https://homezilla360-api.azurewebsites.net/DeclineOrder`);
   }
 
   getProviderCurrentOrders(): Observable<Orders> {
@@ -75,7 +75,7 @@ export class OrderDetailsService {
       data: [],
       totalPages: 0
     };
-    return  this.http.get<Orders>('https://localhost:7263/api/Providers/Current-Order').pipe(
+    return  this.http.get<Orders>('https://homezilla360-api.azurewebsites.net/api/Providers/Current-Order').pipe(
       map((response: Orders ) => {
         currentOrders = response;
         console.log(response);
@@ -90,7 +90,7 @@ export class OrderDetailsService {
       data: [],
       totalPages: 0
     };
-    return  this.http.get<Orders>('https://localhost:7263/api/Providers/Past-Order').pipe(
+    return  this.http.get<Orders>('https://homezilla360-api.azurewebsites.net/api/Providers/Past-Order').pipe(
       map((response: Orders ) => {
         console.log("third");
         pastOrders = response;

@@ -31,7 +31,7 @@ const routes: Routes = [
   {path: 'search', component:SearchPageComponent},
   {path: '', component:HomeComponent},
   {path: 'forgotPassword', component:ForgotPasswordComponent},
-  {path: 'resetPassword', component: ResetPasswordComponent}
+  {path: 'resetPassword', component: ResetPasswordComponent},
   {path: 'providers', component:ProviderDashboardComponent},
   {path: 'verification',component:VerificationComponent},
   {path: 'current-order',component:CurrentOrdersComponent},

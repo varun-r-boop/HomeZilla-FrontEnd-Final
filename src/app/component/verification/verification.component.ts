@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { NgOtpInputConfig } from 'ng-otp-input';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { OtpVerificationService } from 'src/app/services/otp-verification.service';
 import { ToastService } from 'src/app/services/toast-service';
