@@ -14,14 +14,11 @@ import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HomeComponent } from './component/home/home.component';
 import { OtpVerificationService } from './services/otp-verification.service';
-import {ToastrService}from'ngx-toastr';
-import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { CommonModule } from '@angular/common';
 import { CredentialsInterceptor } from './helper/interceptor/credentials.interceptor';
 import { StorageService } from './services/storage.service';
 import { JwtInterceptor } from './helper/interceptor/jwt.interceptor';
 import { NgOtpInputComponent } from 'ng-otp-input';
-
 import { CurrentOrdersComponent } from './component/dashboard/current-orders/current-orders.component';
 import { OrderDetailsService } from './services/order-details.service';
 import { PastOrdersComponent } from './component/dashboard/past-orders/past-orders.component';
@@ -32,18 +29,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchService } from './services/search.service';
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { MessageService } from 'primeng/api';
+import { ToastrModule } from 'ngx-toastr';
+import { ToastsContainer } from './component/shared/toasts-container.components';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+
 import { ProviderDashboardComponent } from './component/provider-dashboard/provider-dashboard.component';
 import { AnalyticsComponent } from './component/provider-dashboard/analytics/analytics.component';
 import { ProviderCurrentOrdersComponent } from './component/provider-dashboard/provider-current-orders/provider-current-orders.component';
 import { ProviderPastOrdersComponent } from './component/provider-dashboard/provider-past-orders/provider-past-orders.component';
 import { NgToggleModule } from 'ng-toggle-button';
+import { CommonNavComponent } from './component/common-nav/common-nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    ForgotPasswordComponent,
     DashboardComponent,
     HeaderComponent,
     SidenavComponent,
@@ -54,10 +56,14 @@ import { NgToggleModule } from 'ng-toggle-button';
     HomeComponent,
     SearchPageComponent,
     ViewDetailComponent,
+    ToastsContainer,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
     ProviderDashboardComponent,
     AnalyticsComponent,
     ProviderCurrentOrdersComponent,
-    ProviderPastOrdersComponent
+    ProviderPastOrdersComponent,
+    CommonNavComponent
      ],
   imports: [
     BrowserModule,
@@ -78,10 +84,8 @@ import { NgToggleModule } from 'ng-toggle-button';
   OtpVerificationService,
   StorageService,
   OrderDetailsService,
-  ToastrService,
   SearchService,
   {provide: MessageService, useValue: MessageService},
-  { provide: ToastrService, useValue: ToastrService },
   { provide: HTTP_INTERCEPTORS, useClass: CredentialsInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   NgOtpInputConfig],

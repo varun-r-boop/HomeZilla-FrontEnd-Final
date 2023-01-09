@@ -1,13 +1,11 @@
 <app-common-nav></app-common-nav>
+<div style="background-color: hsl(32, 100%, 50%);">
+  <br>
+<app-search></app-search>
+</div>
 <div class ="outer">
-    <div class="container">
-    <br>
-    <app-search></app-search>
-
-
-    <div class="container">
         <div class="row">
-        <aside class="col-md-3">
+        <aside class="col-md-2">
     <br>
     <div class="card">
         <article class="filter-group">
@@ -16,6 +14,12 @@
             </header>
             <div class="filter-content collapse show" id="collapse_2" >
                 <div class="card-body">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="" (change)="changeLocation($event)">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          None
+                        </label>
+                      </div>
                      <div class="form-check">
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Chennai" (change)="changeLocation($event)">
                         <label class="form-check-label" for="flexRadioDefault1">
@@ -60,13 +64,13 @@
     <main class="col-md-9">
     <br>
     <div class="row">
-        <div class="col-md-6">
-          <div *ngFor="let posts of post.data" class="card">
+          <div *ngFor="let posts of post.data" class="card col-md-3" >
+            <figure class="card card-product-grid">
             <div *ngIf="posts.profilePicture != null && posts.profilePicture != undefined; else loading">
-              <img class="card-img-top" src="{{posts.profilePicture}}" alt="" style="width:auto; height: auto; padding: 0px 10px 0px 10px;">
+              <img class="card-img-top" src="{{posts.profilePicture}}" alt="" style="width: 240px; height: 150px; padding: 0px 10px 0px 10px;">
             </div>
             <ng-template #loading>
-              <img class="card-img-top" src="../../../assets/image/home-bg.png" alt="" style="width:auto; height: auto; padding: 0px 10px 0px 10px;">
+              <img class="card-img-top" src="../../../assets/image/home-bg.png" alt="" style="width: 220px; height: 150px; padding: 0px 10px 0px 10px;">
             </ng-template>
             
             <div class="card-body">
@@ -75,23 +79,22 @@
               <p class="card-text"><i class="bi bi-geo-alt"></i> {{ posts.location }}</p>
               <a class="btn btn-primary" (click)="openModal(posts.id)">See Profile</a>
             </div>
+          </figure>
           </div> 
-        </div> 
     </div> 
 
-    <nav class="mt-4" aria-label="Page navigation sample">
+  <div class="justify-content-center">
+    <nav class="mt-4 flex-row-reverse" aria-label="Page navigation sample">
       <ngb-pagination
       [collectionSize]="pageSize"
       [(page)]="page"
       [maxSize]="5"
       [rotate]="true"
       [boundaryLinks]="true"
-      (pageChange)="renderPage($event)"
-    ></ngb-pagination>
+      (pageChange)="renderPage($event)"></ngb-pagination>
     </nav>
+  </div>
 
         </main>
         </div>
     </div>
-    </div>
-</div>
