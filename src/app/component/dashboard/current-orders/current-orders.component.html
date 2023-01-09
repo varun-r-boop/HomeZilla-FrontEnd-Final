@@ -57,8 +57,8 @@
                                                 <td>{{ order.id}}</td>
                                                 <td>{{ order.serviceName}}</td>
                                                 <td><span class="badge badge-success">{{order.status}}</span></td>
-                                                <td>{{ order.appointmentFrom | date }}</td>
-                                                <td>{{ order.appointmentTo | date }}</td>
+                                                <td>{{ order.appointmentFrom | date :'short'}}</td>
+                                                <td>{{ order.appointmentTo | date :'short'}}</td>
                                              </tr>
                                         
                                       </tbody>

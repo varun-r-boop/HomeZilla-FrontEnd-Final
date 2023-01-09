@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import jwtDecode from 'jwt-decode';
+import { TokenPayLoad } from '../models/Token';
 
 const USER_KEY = 'auth-user';
 
@@ -6,6 +8,7 @@ const USER_KEY = 'auth-user';
   providedIn: 'root'
 })
 export class StorageService {
+  storageService: any;
   constructor() {}
 
   clean(): void {
@@ -33,5 +36,9 @@ export class StorageService {
     }
 
     return false;
+  }
+
+  public getDecodedAccessToken(): TokenPayLoad {
+      return jwtDecode(this.getUser());
   }
 }

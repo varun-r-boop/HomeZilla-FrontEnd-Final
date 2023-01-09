@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { ProfileService } from 'src/app/services/profile.service';
-import { DialogService } from 'primeng/dynamicdialog';
 import { FormGroup } from '@angular/forms';
 
 
@@ -10,7 +9,7 @@ import { FormGroup } from '@angular/forms';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  providers: [DialogService]
+  providers: []
 })
 export class DashboardComponent implements OnInit{
   user: User;
@@ -19,8 +18,7 @@ export class DashboardComponent implements OnInit{
   dashboardform! : FormGroup;
   constructor(
     //private api: ApiService
-    private profileService : ProfileService,
-    private dialogService: DialogService
+    private profileService : ProfileService
   ){
     this.user = new User();
   }
