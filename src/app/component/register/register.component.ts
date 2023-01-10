@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { ToastService } from 'src/app/services/toast-service';
+import { ToastService } from 'src/app/services/toast.service';
 import { Router } from '@angular/router';
-import { Register } from 'src/app/models/Register';
 
 @Component({
   selector: 'app-register',
@@ -28,7 +27,7 @@ export  class RegisterComponent implements OnInit{
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private toastService: ToastService 
+    public toastService: ToastService 
   ) {}
 
 
@@ -52,23 +51,19 @@ export  class RegisterComponent implements OnInit{
     this.isText ? this.type = "text" : this.type = "password";
   }
 
- 
- 
-
   onSignup(){
    
     if(this.signUpForm.valid){
-
-      console.log(this.signUpForm.value)
       //send obj to db
       this.auth.signUp(this.signUpForm.value)
       .subscribe({
         next:(res)=> {
-          console.log(this.signUpForm.value)
-          this.toastService.show(res['message'], { classname: 'bg-success text-light', delay: 3000 });
-          this.router.navigate(['/verification']);
+          this.router.navigate(['/verification']).then(() => {
+            this.toastService.show(res['message'], { classname: 'bg-success text-light', delay: 3000 });
+          });
         },
         error: (err=> {
+          console.log("signed err");
           this.toastService.show(err?.error.message, { classname: 'bg-danger text-light', delay: 3000 });
         })
       })

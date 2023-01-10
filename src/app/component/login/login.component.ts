@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 import {MessageService} from 'primeng/api';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { ToastService } from 'src/app/services/toast-service';
+import { ToastService } from 'src/app/services/toast.service';
 import jwtDecode from 'jwt-decode';
 import { TokenPayLoad } from 'src/app/models/Token';
 
@@ -69,6 +69,7 @@ export class LoginComponent implements OnInit{
       this.auth.login(this.loginForm.value)
       .subscribe({
         next:(res)=>{
+          
           console.log(res['headers'].get('authorization'));
           this.storageService.saveUser(res['headers'].get('authorization'));
           
@@ -77,14 +78,15 @@ export class LoginComponent implements OnInit{
           this.Token = this.storageService.getDecodedAccessToken();
         //  this.reloadPage();
         console.log(this.Token.role);
-        if(this.Token.role=="Customer"){
-          this.router.navigate(['/home']);
-       }
+        if(this.Token.role=="Customer")
+        {  
+          this.router.navigate(['/home']).then(() => {
+            this.toastService.show('Login Successful', { classname: 'bg-success text-light', delay: 3000 });
+          });
+        }
        else if(this.Token.role=="Provider"){
          this.router.navigate(['/providers']);
-       }
-         
-         this.toastService.show('Login Successful', { classname: 'bg-success text-light', delay: 3000 });
+        }
         },
         error: (err)=>{
           this.toastService.show(err?.error.message, { classname: 'bg-danger text-light', delay: 3000 });

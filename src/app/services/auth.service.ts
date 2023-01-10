@@ -32,7 +32,9 @@ export class AuthService {
   // }
   signUp( userObj: any) {
     this.userEmailId.next(userObj.email);
-    return this.http.post<any>(`${this.baseUrl}Register`, userObj)
+    return this.http.post<any>(`${this.baseUrl}Register`, userObj,  {
+      responseType: 'text' as 'json'
+    })
   }
 
     signOut(){
@@ -42,7 +44,8 @@ export class AuthService {
 
   login(login: Login): Observable<Login>{
     return this.http.post<Login>(`${this.baseUrl}Login`, login,  {
-      observe: "response"
+      observe: "response",
+      responseType: 'text' as 'json'
     })
    }
 

@@ -31,7 +31,7 @@ export class CommonNavComponent implements OnInit {
   logOut()
   {
     this.authService.signOut();
-    window.location.reload();
+    this.router.navigate(['/home']);
   }
   profile()
   {
