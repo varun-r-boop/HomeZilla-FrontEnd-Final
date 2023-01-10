@@ -27,7 +27,7 @@ import { SearchPageComponent } from './component/search-page/search-page.compone
 import { ViewDetailComponent } from './component/view-detail/view-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchService } from './services/search.service';
-import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { MessageService } from 'primeng/api';
 import { ToastrModule } from 'ngx-toastr';
 import { ToastsContainer } from './component/shared/toasts-container.components';
@@ -70,7 +70,8 @@ import { CommonNavComponent } from './component/common-nav/common-nav.component'
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule, 
+    CommonModule,
+    NgbDropdownModule,
     NgOtpInputModule,
     NgbModule,
     FormsModule,

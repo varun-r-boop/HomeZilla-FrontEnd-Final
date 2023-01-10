@@ -1,8 +1,8 @@
 body{
-    background:linear-gradient(to top, rgb(44, 42, 42), hsl(32, 100%, 50%)) no-repeat;
+    background-color: rgb(44, 42, 42);
     }
     .panel-order .row {
-        border-bottom:linear-gradient(to top, rgb(44, 42, 42), hsl(32, 100%, 50%)) no-repeat;;
+      background-color: hsl(32, 100%, 50%);
     }
     .panel-order .row:last-child {
         border: 0px;
@@ -19,7 +19,7 @@ body{
         border-bottom: 0;
     }
     .panel-order .row .col-md-11 {
-        border-left:linear-gradient(to top, rgb(44, 42, 42), hsl(32, 100%, 50%)) no-repeat;;
+      background-color: hsl(32, 100%, 50%);
     }
     .panel-order .row .row .col-md-12 {
         padding-top: 7px;
@@ -28,7 +28,7 @@ body{
     .panel-order .row .row .col-md-12:last-child {
         font-size: 11px; 
         color: #555;  
-        background: linear-gradient(to top, rgb(44, 42, 42), hsl(32, 100%, 50%)) no-repeat;;
+        background-color: hsl(32, 100%, 50%);
     }
     .panel-order .btn-group {
         margin: 0px;
@@ -102,3 +102,6 @@ body{
       .slider.round:before {
         border-radius: 50%;
       }                 
+      .col-md-1{
+background-color: rgb(63, 57, 57);
+      }

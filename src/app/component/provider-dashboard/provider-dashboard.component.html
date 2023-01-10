@@ -118,8 +118,78 @@
 
                                         
                                     </div>
+
+
+                                  
+
+                                      
+
+                                    <div class="row">
+                                      <div class="col">
+                                        <div ngbDropdown class="d-inline-block">
+                                         
+                                          
+                                          <form [formGroup]="userForm">
+                                            <select class="form-control" formControlName="service" required>
+                                                <option value="">Choose a Service </option>
+                                                <option *ngFor = "let serviceData of serviceList.services" value="{{serviceData}}">{{serviceData}}</option>
+                                            </select>
+                                            <p class="card-text"><i class="bi bi-card-heading"><b> Price : </b></i>
+                                                <input class="form-control" type="number" formControlName="price">
+                                            
+                                                <br>
+                                            <button class="btn btn-primary" (click)="addService()">Save </button>
+                                          </form>
+
+
+                                          <!-- <div ngbDropdownMenu aria-labelledby="dropdownForm1">
+                                            <form class="px-4 py-3" >
+                                              <div class="mb-3">
+                                                <label for="exampleDropdownFormEmail1">Service Name</label>
+                                                <select class="form-control"  formControlName="serviceData"  >
+
+                                                  <option value="">Choose a Service </option>
+                                  
+                                                  <option *ngFor = "let serviceData of serviceList.services" [(ngModel)] = "newService.service"value="{{serviceData}}" >{{serviceData}}</option>
+                                  
+                                              </select>
+                                              
+                                              </div>
+                                              <div class="mb-3">
+                                                <label for="exampleDropdownFormPassword1">Price</label>
+                                                <input
+                                                  type="number"
+                                                  class="form-control"
+                                                  id="DropdownFormPrice"
+                                                  [(ngModel)]="newService.price"
+                                                  [ngModelOptions]="{standalone: true}"
+                                                  value={{newService.price}}
+                                                />
+                                              </div>
+                                              
+                                              <button type="submit" class="btn btn-primary" (click)="addService()">Save</button>
+                                            </form>
+                                             
                                     
-                                    <div class="card" style="width: 18rem;">
+                                        </div> -->
+                                      </div>
+                                    </div>
+                                    </div>
+
+                                    <div class="card w-50" *ngFor="let service of services">
+                                      <div class="card-body">
+                                        <h5 class="card-title">{{service.service}}</h5>
+                                        <p class="card-text">{{ service.price | currency }}</p>
+                                        <button class="btn btn-danger" (click)="deleteService(service)">Delete</button>
+                                      </div>
+                                    </div>
+
+                                
+                                    
+                                    
+                                    
+                                    
+                                    <!-- <div class="card" style="width: 18rem;">
                                         <div class="card-header">
                                           Services:
                                         </div>
@@ -138,7 +208,7 @@
                                                     <p>Plumber</p>
                                                     
                                                     <ng-toggle
-                                                    
+                                                    [(value)]="valueC"
                                                     [color]="{
                                                         unchecked: 'red',
                                                         checked: 'green'
@@ -147,7 +217,7 @@
                                                     <br>
                                                     <p>Carpenter</p>
                                                     <ng-toggle
-                                                    [value]=""
+                                                    [(value)]="valueH"
                                                     [color]="{
                                                         unchecked: 'red',
                                                         checked: 'green'
@@ -156,7 +226,7 @@
                                                     <br>
                                                     <p>HouseKeeper</p>
                                                     <ng-toggle
-                                                    [value]=""
+                                                    [(value)]="valueE"
                                                     [color]="{
                                                         unchecked: 'red',
                                                         checked: 'green'
@@ -167,57 +237,9 @@
                                         </div>
                                          
                                                 
-                                      </div>
-
-                                      <!-- <ng-template #cardTemplate let-service="service">
-                                        <div class="card m-3">
-                                          <div class="card-body">
-                                            <h5 class="card-title">{{ service.name }}</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">{{ service.price | currency }}</h6>
-                                            <div class="form-check">
-                                              <input class="form-check-input" type="checkbox" value="" (change)="addService(service)">
-                                              <label class="form-check-label">Select</label>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </ng-template>
-                                      
-                                      <div class="d-flex flex-wrap">
-                                        <ng-container *ngFor="let service of services">
-                                          <ng-container *ngTemplateOutlet="cardTemplate; context: { service: service }"></ng-container>
-                                        </ng-container>
                                       </div> -->
-                                      
-                                      <!-- <form (ngSubmit)="getServices()" #serviceForm="ngForm">
-                                        <div class="form-group">
-                                          <label for="name">Name</label>
-                                          <input type="text" class="form-control"  name="name" id="name" required>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="price">Price</label>
-                                          <input type="number" class="form-control"  name="price" id="price" required>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary" [disabled]="!serviceForm.form.valid">Add Service</button>
-                                      </form> -->
-                                      
 
-                                      <!-- <div class="d-flex flex-wrap">
-                                        <ng-container *ngFor="let service of services">
-                                          <ng-container *ngTemplateOutlet="cardTemplate; context: { service: service }"></ng-container>
-                                        </ng-container>
-                                        <ng-template #cardTemplate let-service="service">
-                                            <div class="cards m-3" style="width: 18rem;">
-                                              <div class="card-body" >
-                                                <h5 class="card-title">{{ service.service }}</h5>
-                                                <p class="charges" >Your hourly charges</p>
-                                                <h6 class="card-subtitle mb-2 " style="color: greenyellow">{{ service.price | currency }}</h6>
-                                                <button class="btn btn-success mr-2" (click)="updateService(service)">Edit</button>
-                                                <button class="btn btn-danger" (click)="deleteService(service)">Delete</button>
-                                              </div>
-                                            </div>
-                                          </ng-template>
-                                      </div>
-                                       -->
+                                     
                                       
                                       
                                      

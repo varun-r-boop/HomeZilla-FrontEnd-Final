@@ -1,17 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ServiceData } from '../models/provider-services';
+import { ServiceList } from '../models/service-check';
 import { ServiceId } from '../models/service-op';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProviderService {
-
   constructor(private http: HttpClient) { }
     getServiceData():Observable<ServiceData[]>{
-        return this.http.get<ServiceData[]>('https://homezilla360-api.azurewebsites.net/api/Providers/Get-Service')
+        var res = this.http.get<ServiceData[]>('https://homezilla360-api.azurewebsites.net/api/Providers/Get-Service')
+        return res;
     }
     addServiceData(service: ServiceData):Observable<ServiceData>{
         return this.http.post<ServiceData>('https://homezilla360-api.azurewebsites.net/api/Providers/Add-Service',service)
@@ -21,9 +22,10 @@ export class ProviderService {
     }
     deleteServiceData(service: ServiceId):Observable<ServiceId>{
         return this.http.delete<ServiceId>('https://homezilla360-api.azurewebsites.net/api/Providers/Delete-Service',{
-            body: {
-                id: service.id
-            } 
+            body: service
         })
+    }
+    checkServiceData():Observable<ServiceList>{
+        return this.http.get<ServiceList>('https://homezilla360-api.azurewebsites.net/api/Providers/Check-Service')
     }
 }

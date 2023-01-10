@@ -7,10 +7,9 @@
 <div class="container bootdey">
     <div class="panel panel-default panel-order">
         <div class="panel-heading">
-            <strong>Current Orders</strong>
+          <h2> <strong>Current Orders</strong></h2>
             <div class="btn-group pull-right">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">Filter history <i class="fa fa-filter"></i></button>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a href="#">Approved orders</a></li>
                         <li><a href="#">Pending orders</a></li>
@@ -27,13 +26,13 @@
                     <div *ngFor="let order of waitingOrders.data">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="pull-right"><label class="label label-danger">Accepted</label></div>
-                            <span><strong>{{order.serviceName}}</strong></span> <span class="label label-info"></span><br />
-                           Appointment Booked from  {{order.appointmentFrom | date :'short'}} to {{order.appointmentTo | date :'short'}} <br />
-                            <a data-placement="top" (click)="acceptOrder(order.id)" class="btn btn-success btn-xs glyphicon glyphicon-ok" title="View">Accept</a>
-                            <a data-placement="top" (click)="declineOrder(order.id)" class="btn btn-danger btn-xs glyphicon glyphicon-trash" title="Danger">Decline</a>
+                           <h4> <span><strong>{{order.serviceName}}</strong></span> <span class="label label-info"></span><br /></h4>
+                          <h5> Appointment Booked from  {{order.appointmentFrom | date :'short'}} to {{order.appointmentTo | date :'short'}} </h5>
+                    
+                            <a data-placement="top" (click)="acceptOrder(order.id)" class="btn btn-success btn-xs glyphicon glyphicon-ok" title="View" style = "margin: 10px;">Accept</a>
+                            <a data-placement="top" (click)="declineOrder(order.id)" class="btn btn-danger btn-xs glyphicon glyphicon-trash" title="Danger" style="margin: 10px;">Decline</a>
                         </div>
-                        <div class="col-md-12">order made on: 05/31/2014 by <a href="#">Varun </a></div>
+                       
                     </div>
                     </div>
                     </div>
