@@ -10,7 +10,7 @@ import { SearchResponse } from '../models/search-response';
 })
 export class SearchService {
   public searchPostUrl = "https://homezilla360-api.azurewebsites.net/api/Search"
-  public searchProviderUrl = "https://homezilla360-api.azurewebsites.net/api/Get-Provider"
+  public searchProviderUrl = "https://homezilla360-api.azurewebsites.net/Get-Provider"
   public searchData : Subject<SearchResponse> = new Subject<SearchResponse>();
   public providerData : Subject<ProviderData> = new Subject<ProviderData>();
 

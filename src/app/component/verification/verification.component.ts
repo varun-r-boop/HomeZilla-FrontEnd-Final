@@ -4,7 +4,7 @@ import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router'
 import { NgOtpInputConfig } from 'ng-otp-input';
 import { AuthService } from 'src/app/services/auth.service';
 import { OtpVerificationService } from 'src/app/services/otp-verification.service';
-import { ToastService } from 'src/app/services/toast-service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-verification',
@@ -48,12 +48,13 @@ submit(){
     this.otpVerificationService.verifyOtp(this.email,this.otp).subscribe({
       next: (response: any)=>{
       
-          this.router.navigateByUrl('/login');
-          this.toastService.show('response.message', { classname: 'bg-danger text-light', delay: 3000 });
+          this.router.navigateByUrl('/login').then(() => {
+            this.toastService.show(response.message, { classname: 'bg-danger text-light', delay: 3000 });
+          });
+          
       },
       error: (err) => {
-        console.log('[Verify - ERR]', err);
-        this.toastService.show('Something went Wrong', { classname: 'bg-danger text-light', delay: 3000 });
+        this.toastService.show(err?.error.message, { classname: 'bg-danger text-light', delay: 3000 });
       },
     });
   }

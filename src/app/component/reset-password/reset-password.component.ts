@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Route, Router } from '@angular/router';
 import { NgOtpInputConfig } from 'ng-otp-input';
-import { ToastService } from 'src/app/services/toast-service';
+import { ToastService } from 'src/app/services/toast.service';
 import { ResetPassword } from '../../models/resetPassword';
 import { AuthService } from '../../services/auth.service';
 
@@ -60,12 +60,11 @@ updatePassword(){
   }
   this.auth.resetPassword(this.resetPasswordInfo).subscribe({
     next: (res) => {
-      console.log(res);
-      this.toastService.show('Reset password email sent successful', { classname: 'bg-success text-light', delay: 3000 });
-      this.router.navigateByUrl('/dashboard');
+      this.router.navigateByUrl('/login').then(() => {
+        this.toastService.show('Reset password email sent successful', { classname: 'bg-success text-light', delay: 3000 });
+      });
     },
-    error: (err) => {
-      console.log(err);  
+    error: (err) => { 
       this.toastService.show('Something went wrong', { classname: 'bg-success text-light', delay: 3000 });
     }
   })

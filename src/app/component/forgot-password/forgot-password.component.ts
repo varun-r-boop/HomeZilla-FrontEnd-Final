@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastService } from 'src/app/services/toast-service';
+import { ToastService } from 'src/app/services/toast.service';
 
 //import { ReactiveFormsModule } from '@angular/forms';
 @Component({
@@ -34,12 +34,13 @@ export class ForgotPasswordComponent implements OnInit{
     .subscribe({
 
       next: (res)=> {
-      this.toastService.show('Reset password email sent successful', { classname: 'bg-success text-light', delay: 3000 });
-      this.router.navigate(['/resetPassword']);
+      this.router.navigate(['/resetPassword']).then(() => {
+        this.toastService.show('Reset password email sent successful', { classname: 'bg-success text-light', delay: 3000 })
+      });
       
     } ,
     error: (err)=>{
-      this.toastService.show('Something went Wrong', { classname: 'bg-danger text-light', delay: 3000 });
+      this.toastService.show(err?.error.message, { classname: 'bg-danger text-light', delay: 3000 });
       
      }
     }

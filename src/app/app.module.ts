@@ -29,7 +29,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchService } from './services/search.service';
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { MessageService } from 'primeng/api';
-import { ToastrModule } from 'ngx-toastr';
 import { ToastsContainer } from './component/shared/toasts-container.components';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
@@ -40,6 +39,7 @@ import { ProviderCurrentOrdersComponent } from './component/provider-dashboard/p
 import { ProviderPastOrdersComponent } from './component/provider-dashboard/provider-past-orders/provider-past-orders.component';
 import { NgToggleModule } from 'ng-toggle-button';
 import { CommonNavComponent } from './component/common-nav/common-nav.component';
+import { ToastService } from './services/toast.service';
 
 @NgModule({
   declarations: [
@@ -88,7 +88,9 @@ import { CommonNavComponent } from './component/common-nav/common-nav.component'
   {provide: MessageService, useValue: MessageService},
   { provide: HTTP_INTERCEPTORS, useClass: CredentialsInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-  NgOtpInputConfig],
+  NgOtpInputConfig,
+  ToastService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
