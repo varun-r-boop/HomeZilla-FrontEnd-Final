@@ -7,7 +7,7 @@ import { ProviderData } from 'src/app/models/provider-data';
 import { OrderDetailsService } from 'src/app/services/order-details.service';
 import { SearchService } from 'src/app/services/search.service';
 import { StorageService } from 'src/app/services/storage.service';
-//import { ToastService } from 'src/app/services/toast.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-view-detail',
@@ -26,7 +26,7 @@ export class ViewDetailComponent implements OnInit {
     public activeModal: NgbActiveModal, 
     private searchService : SearchService, 
     private storageService: StorageService, 
-    //private toastService: ToastService, 
+    private toastService: ToastService, 
     public orderService: OrderDetailsService,
     private route: ActivatedRoute,
     private fb: FormBuilder
@@ -59,10 +59,10 @@ export class ViewDetailComponent implements OnInit {
           console.log(res);
           if(res === "Placed the Order Successfully")
           {
-            //this.toastService.show('Placed the Order', { classname: 'bg-success text-light', delay: 3000 });
+            this.toastService.show('Placed the Order', { classname: 'bg-success text-light', delay: 3000 });
           }
           else{
-            //this.toastService.show('Provider Not Available', { classname: 'bg-danger text-light', delay: 3000 });
+            this.toastService.show('Provider Not Available', { classname: 'bg-danger text-light', delay: 3000 });
           }
         },
         error:(err => {
@@ -72,7 +72,7 @@ export class ViewDetailComponent implements OnInit {
     }
     else
     {
-      //this.toastService.show('Login Required', { classname: 'bg-danger text-light', delay: 3000 });
+      this.toastService.show('Login Required', { classname: 'bg-danger text-light', delay: 3000 });
     }
   }
 }
